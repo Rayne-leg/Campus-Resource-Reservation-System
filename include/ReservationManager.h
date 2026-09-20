@@ -25,6 +25,9 @@ public:
 
     bool searchReservation(const std::string& reservationID) const;
 
+    bool hasResourceDateConflict(const std::string& resourceID,
+                                 const std::string& reservationDate) const;
+
     bool removeReservation(const std::string& reservationID,
                            Reservation& removedReservation);
 

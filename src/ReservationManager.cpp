@@ -20,8 +20,15 @@ ReservationManager::~ReservationManager()
 
 bool ReservationManager::addReservation(const Reservation& reservation)
 {
-    // Does not allow duplicate reservation IDs
+    // Check for duplicate reservation ID
     if (searchReservation(reservation.getReservationID()))
+    {
+        return false;
+    }
+
+    // Check if the same resource is already reserved on the same date
+    if (hasResourceDateConflict(reservation.getResourceID(),
+                                reservation.getReservationDate()))
     {
         return false;
     }
@@ -34,7 +41,6 @@ bool ReservationManager::addReservation(const Reservation& reservation)
 
     return true;
 }
-    
 
 void ReservationManager::displayReservations() const
 {
@@ -87,6 +93,26 @@ bool ReservationManager::searchReservation(
     return false;
 }
 
+bool ReservationManager::hasResourceDateConflict(
+    const std::string& resourceID,
+    const std::string& reservationDate) const
+{
+    Node* current = head;
+
+    while (current != nullptr)
+    {
+        if (current->data.getResourceID() == resourceID &&
+            current->data.getReservationDate() == reservationDate)
+        {
+            return true;
+        }
+
+        current = current->next;
+    }
+
+    return false;
+}
+
 bool ReservationManager::removeReservation(
     const std::string& reservationID,
     Reservation& removedReservation)
@@ -98,7 +124,7 @@ bool ReservationManager::removeReservation(
     {
         if (current->data.getReservationID() == reservationID)
         {
-            // Save the reservation before deleting the node
+            // Save reservation before deleting the node
             removedReservation = current->data;
 
             if (previous == nullptr)
@@ -131,6 +157,23 @@ bool ReservationManager::editReservation(
     {
         if (current->data.getReservationID() == reservationID)
         {
+            // Check that changing the date will not create
+            // a resource/date conflict with another reservation
+            Node* check = head;
+
+            while (check != nullptr)
+            {
+                if (check != current &&
+                    check->data.getResourceID() ==
+                        current->data.getResourceID() &&
+                    check->data.getReservationDate() == newDate)
+                {
+                    return false;
+                }
+
+                check = check->next;
+            }
+
             current->data.setReservationDate(newDate);
             return true;
         }
