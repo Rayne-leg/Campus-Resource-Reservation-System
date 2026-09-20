@@ -2,6 +2,7 @@
 #define RESERVATION_MANAGER_H
 
 #include "Reservation.h"
+#include <string>
 
 class ReservationManager
 {
@@ -15,23 +16,20 @@ private:
     Node* head;
 
 public:
-    // Constructor
     ReservationManager();
-
-    // Destructor
     ~ReservationManager();
 
-    // Add a reservation
-    void addReservation(Reservation reservation);
+    bool addReservation(const Reservation& reservation);
 
-    // Display all active reservations
     void displayReservations() const;
 
-    // Search for a reservation by ID
-    bool searchReservation(int reservationID) const;
+    bool searchReservation(const std::string& reservationID) const;
 
-    // Cancel/remove a reservation by ID
-    bool cancelReservation(int reservationID);
+    bool removeReservation(const std::string& reservationID,
+                           Reservation& removedReservation);
+
+    bool editReservation(const std::string& reservationID,
+                         const std::string& newDate);
 };
 
 #endif
