@@ -2,7 +2,7 @@
 #include <limits>
 
 #include "ResourceManager.h"
-#include "ReservationList.h"   
+#include "ReservationManager.h"   
 #include "WaitingList.h"       
 #include "CancellationStack.h" 
 
@@ -69,7 +69,7 @@ void handleReserve(ResourceManager& resourceManager,
 
     // IMPORTANT!!! rn ResourceManager has no way to flip a resource's
     // availability, so the "Available"/"Unavailable" column cant update
-    // here. someone has to add something like
+    // here. ken has to add something like
     // ResourceManager::setAvailability(resourceID, status) for that
 
     std::cout << "Reservation " << reservationID << " created for " << resourceID << "." << std::endl;
