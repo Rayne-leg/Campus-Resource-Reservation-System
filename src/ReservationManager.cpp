@@ -1,18 +1,37 @@
-#include <iostream>
 #include "../include/ReservationManager.h"
+#include <iostream>
 
+// Constructor
 ReservationManager::ReservationManager()
 {
     head = nullptr;
 }
+
+// Destructor
+ReservationManager::~ReservationManager()
+{
+    Node* current = head;
+
+    while (current != nullptr)
+    {
+        Node* temp = current;
+        current = current->next;
+        delete temp;
+    }
+}
+
+// Add a reservation to the linked list
 void ReservationManager::addReservation(Reservation reservation)
 {
     Node* newNode = new Node;
 
     newNode->data = reservation;
     newNode->next = head;
+
     head = newNode;
 }
+
+// Display all active reservations
 void ReservationManager::displayReservations() const
 {
     Node* current = head;
@@ -38,4 +57,54 @@ void ReservationManager::displayReservations() const
 
         current = current->next;
     }
+}
+
+// Search for a reservation by reservation ID
+bool ReservationManager::searchReservation(int reservationID) const
+{
+    Node* current = head;
+
+    while (current != nullptr)
+    {
+        if (current->data.getReservationID() == reservationID)
+        {
+            return true;
+        }
+
+        current = current->next;
+    }
+
+    return false;
+}
+
+// Cancel/remove a reservation by reservation ID
+bool ReservationManager::cancelReservation(int reservationID)
+{
+    Node* current = head;
+    Node* previous = nullptr;
+
+    while (current != nullptr)
+    {
+        if (current->data.getReservationID() == reservationID)
+        {
+            // Reservation is the first node
+            if (previous == nullptr)
+            {
+                head = current->next;
+            }
+            else
+            {
+                previous->next = current->next;
+            }
+
+            delete current;
+
+            return true;
+        }
+
+        previous = current;
+        current = current->next;
+    }
+
+    return false;
 }
