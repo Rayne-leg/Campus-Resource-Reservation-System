@@ -32,7 +32,7 @@ void clearInputError()
 }
 
 void handleReserve(ResourceManager& resourceManager,
-                    ReservationList& reservationList,
+                    ReservationManager& reservationManager,
                     WaitingList& waitingList)
 {
     std::string resourceID, studentID, studentName, date;
@@ -65,7 +65,15 @@ void handleReserve(ResourceManager& resourceManager,
     std::string reservationID = "RES" + std::to_string(nextReservationNumber++);
 
     Reservation newReservation(reservationID, studentID, studentName, resourceID, date);
-    reservationList.addReservation(newReservation);
+
+    if (!reservationManager.addReservation(newReservation))
+    {
+        // Shouldn't normally happen since IDs are auto-generated, but
+        // ReservationManager now protects against duplicate IDs, so
+        // handle a rejected add instead of assuming it always succeeds.
+        std::cout << "Could not create reservation (duplicate ID)." << std::endl;
+        return;
+    }
 
     // IMPORTANT!!! rn ResourceManager has no way to flip a resource's
     // availability, so the "Available"/"Unavailable" column cant update
@@ -75,7 +83,7 @@ void handleReserve(ResourceManager& resourceManager,
     std::cout << "Reservation " << reservationID << " created for " << resourceID << "." << std::endl;
 }
 
-void handleEdit(ReservationList& reservationList)
+void handleEdit(ReservationManager& reservationManager)
 {
     std::string reservationID, newDate;
 
@@ -84,7 +92,7 @@ void handleEdit(ReservationList& reservationList)
     std::cout << "Enter new date: ";
     std::cin >> newDate;
 
-    if (reservationList.editReservation(reservationID, newDate))
+    if (reservationManager.editReservation(reservationID, newDate))
     {
         std::cout << "Reservation updated." << std::endl;
     }
@@ -95,7 +103,7 @@ void handleEdit(ReservationList& reservationList)
 }
 
 void handleCancel(ResourceManager& resourceManager,
-                   ReservationList& reservationList,
+                   ReservationManager& reservationManager,
                    WaitingList& waitingList,
                    CancellationStack& cancellationStack)
 {
@@ -106,7 +114,7 @@ void handleCancel(ResourceManager& resourceManager,
 
     Reservation removed;
 
-    if (!reservationList.removeReservation(reservationID, removed))
+    if (!reservationManager.removeReservation(reservationID, removed))
     {
         std::cout << "Reservation ID not found." << std::endl;
         return;
@@ -114,11 +122,11 @@ void handleCancel(ResourceManager& resourceManager,
 
     // record the cancellation on the history stack
     std::string cancelDate = "today";
-    cancellationStack.push(CancelledReservation(removed.reservationID,
-                                                 removed.studentID,
-                                                 removed.studentName,
-                                                 removed.resourceID,
-                                                 removed.reservationDate,
+    cancellationStack.push(CancelledReservation(removed.getReservationID(),
+                                                 removed.getStudentID(),
+                                                 removed.getStudentName(),
+                                                 removed.getResourceID(),
+                                                 removed.getReservationDate(),
                                                  cancelDate));
 
 
@@ -129,7 +137,7 @@ void handleCancel(ResourceManager& resourceManager,
     WaitingList holding;
     while (waitingList.dequeue(nextInLine))
     {
-        if (!promoted && nextInLine.resourceID == removed.resourceID)
+        if (!promoted && nextInLine.resourceID == removed.getResourceID())
         {
             std::string newResID = "RES" + std::to_string(nextReservationNumber++);
             Reservation promotedReservation(newResID,
@@ -137,10 +145,18 @@ void handleCancel(ResourceManager& resourceManager,
                                              nextInLine.studentName,
                                              nextInLine.resourceID,
                                              nextInLine.reservationDate);
-            reservationList.addReservation(promotedReservation);
-            std::cout << "Promoted " << nextInLine.studentName
-                      << " from the waiting list to reservation " << newResID << "." << std::endl;
-            promoted = true;
+            if (reservationManager.addReservation(promotedReservation))
+            {
+                std::cout << "Promoted " << nextInLine.studentName
+                          << " from the waiting list to reservation " << newResID << "." << std::endl;
+                promoted = true;
+            }
+            else
+            {
+                // Extremely unlikely (fresh generated ID), but don't
+                // silently drop the student if it ever happens.
+                holding.enqueue(nextInLine);
+            }
         }
         else
         {
@@ -157,7 +173,7 @@ void handleCancel(ResourceManager& resourceManager,
     std::cout << "Reservation " << reservationID << " cancelled." << std::endl;
 }
 
-void handleUndo(ReservationList& reservationList,
+void handleUndo(ReservationManager& reservationManager,
                  CancellationStack& cancellationStack)
 {
     CancelledReservation lastCancelled;
@@ -173,7 +189,14 @@ void handleUndo(ReservationList& reservationList,
                           lastCancelled.resourceID,
                           lastCancelled.reservationDate);
 
-    reservationList.addReservation(restored);
+    if (!reservationManager.addReservation(restored))
+    {
+        // Someone else grabbed the same ID while it sat on the stack
+        // (shouldn't happen in normal use, but don't lose the record).
+        std::cout << "Could not restore reservation " << lastCancelled.reservationID
+                   << " (ID now in use)." << std::endl;
+        return;
+    }
 
     std::cout << "Restored reservation " << lastCancelled.reservationID << "." << std::endl;
 }
@@ -181,11 +204,11 @@ void handleUndo(ReservationList& reservationList,
 int main()
 {
     ResourceManager resourceManager;
-    ReservationList reservationList;   
+    ReservationManager reservationManager;   
     WaitingList waitingList;          
     CancellationStack cancellationStack; 
 
-    if (!resourceManager.loadResources("resources.txt"))
+    if (!resourceManager.loadResources("data/resources.txt"))
     {
         std::cout << "Warning: starting with no resources loaded." << std::endl;
     }
@@ -206,19 +229,19 @@ int main()
         switch (choice)
         {
             case 1:
-                handleReserve(resourceManager, reservationList, waitingList);
+                handleReserve(resourceManager, reservationManager, waitingList);
                 break;
             case 2:
-                reservationList.displayAll();
+                reservationManager.displayReservations();
                 break;
             case 3:
-                handleEdit(reservationList);
+                handleEdit(reservationManager);
                 break;
             case 4:
-                handleCancel(resourceManager, reservationList, waitingList, cancellationStack);
+                handleCancel(resourceManager, reservationManager, waitingList, cancellationStack);
                 break;
             case 5:
-                handleUndo(reservationList, cancellationStack);
+                handleUndo(reservationManager, cancellationStack);
                 break;
             case 6:
                 resourceManager.displayAllResources();
