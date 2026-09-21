@@ -37,6 +37,10 @@ bool ResourceManager::loadResources(const std::string& filename)
         std::getline(ss, name, '|');
         std::getline(ss, type, '|');
         std::getline(ss, status);
+	if (!status.empty() && status.back() == '\r')
+	{
+    	    status.pop_back();
+	}
 
         Resource resource(id, name, type, status);
 
