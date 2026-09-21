@@ -23,6 +23,7 @@ public:
     std::string getResourceName() const;
     std::string getResourceType() const;
     std::string getAvailability() const;
+    void setAvailability(const std::string& status);
 };
 
 #endif

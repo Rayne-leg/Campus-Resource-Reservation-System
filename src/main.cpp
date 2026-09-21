@@ -75,11 +75,8 @@ void handleReserve(ResourceManager& resourceManager,
         return;
     }
 
-    // IMPORTANT!!! rn ResourceManager has no way to flip a resource's
-    // availability, so the "Available"/"Unavailable" column cant update
-    // here. ken has to add something like
-    // ResourceManager::setAvailability(resourceID, status) for that
-
+	resourceManager.setAvailability(resourceID, "Unavailable");
+    
     std::cout << "Reservation " << reservationID << " created for " << resourceID << "." << std::endl;
 }
 
@@ -163,18 +160,23 @@ void handleCancel(ResourceManager& resourceManager,
             holding.enqueue(nextInLine);
         }
     }
+
     while (holding.dequeue(nextInLine))
     {
         waitingList.enqueue(nextInLine);
     }
 
-
+    if (!promoted)
+    {
+        resourceManager.setAvailability(removed.getResourceID(), "Available");
+    }
 
     std::cout << "Reservation " << reservationID << " cancelled." << std::endl;
 }
 
-void handleUndo(ReservationManager& reservationManager,
-                 CancellationStack& cancellationStack)
+void handleUndo(ResourceManager& resourceManager,
+                ReservationManager& reservationManager,
+                CancellationStack& cancellationStack)
 {
     CancelledReservation lastCancelled;
 
@@ -197,6 +199,8 @@ void handleUndo(ReservationManager& reservationManager,
                    << " (ID now in use)." << std::endl;
         return;
     }
+
+    resourceManager.setAvailability(lastCancelled.resourceID, "Unavailable");
 
     std::cout << "Restored reservation " << lastCancelled.reservationID << "." << std::endl;
 }
@@ -241,7 +245,7 @@ int main()
                 handleCancel(resourceManager, reservationManager, waitingList, cancellationStack);
                 break;
             case 5:
-                handleUndo(reservationManager, cancellationStack);
+                handleUndo(resourceManager, reservationManager, cancellationStack);
                 break;
             case 6:
                 resourceManager.displayAllResources();

@@ -20,6 +20,9 @@ public:
     bool resourceExists(const std::string& resourceID) const;
 
     bool isResourceAvailable(const std::string& resourceID) const;
+
+    bool setAvailability(const std::string& resourceID,
+                         const std::string& status);
 };
 
 #endif

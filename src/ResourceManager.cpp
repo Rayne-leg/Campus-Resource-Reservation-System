@@ -129,3 +129,18 @@ bool ResourceManager::isResourceAvailable(const std::string& resourceID) const
 
     return false;
 }
+
+bool ResourceManager::setAvailability(const std::string& resourceID,
+                                      const std::string& status)
+{
+    for (Resource& resource : resources)
+    {
+        if (resource.getResourceID() == resourceID)
+        {
+            resource.setAvailability(status);
+            return true;
+        }
+    }
+
+    return false;
+}

@@ -38,3 +38,7 @@ std::string Resource::getAvailability() const
 {
     return availability;
 } 
+void Resource::setAvailability(const std::string& status)
+{
+    availability = status;
+}
