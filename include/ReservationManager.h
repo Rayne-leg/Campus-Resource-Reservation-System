@@ -15,6 +15,11 @@ private:
 
     Node* head;
 
+    static Node* mergeSort(Node* start);
+
+    static Node* mergeSortedLists(
+        Node* left, Node* right);
+
 public:
     ReservationManager();
     ~ReservationManager();
@@ -40,6 +45,8 @@ public:
 
     int countReservationsForResource(
         const std::string& resourceID) const;
+
+    void sortByDate();
 };
 
 #endif

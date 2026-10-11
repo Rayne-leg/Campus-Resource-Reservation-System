@@ -74,7 +74,7 @@ void ReservationManager::displayReservations() const
     }
 }
 
-// Manual linear search.
+// Manual linear search: O(n).
 bool ReservationManager::searchReservation(
     const std::string& reservationID) const
 {
@@ -181,7 +181,7 @@ bool ReservationManager::editReservation(
     return false;
 }
 
-// Live count used by Favour's resource reports.
+// Counts current active reservations for one resource: O(n).
 int ReservationManager::countReservationsForResource(
     const std::string& resourceID) const
 {
@@ -200,3 +200,75 @@ int ReservationManager::countReservationsForResource(
 
     return count;
 }
+
+// Combines two lists that are already sorted by date.
+ReservationManager::Node* ReservationManager::mergeSortedLists(
+    Node* left, Node* right)
+{
+    Node dummy;
+    dummy.next = nullptr;
+    Node* tail = &dummy;
+
+    while (left != nullptr && right != nullptr)
+    {
+        // Taking the left node on equal dates preserves tie order.
+        if (left->data.getReservationDate() <=
+            right->data.getReservationDate())
+        {
+            tail->next = left;
+            left = left->next;
+        }
+        else
+        {
+            tail->next = right;
+            right = right->next;
+        }
+
+        tail = tail->next;
+    }
+
+    if (left != nullptr)
+    {
+        tail->next = left;
+    }
+    else
+    {
+        tail->next = right;
+    }
+
+    return dummy.next;
+}
+
+// Manual merge sort: O(n log n) time.
+ReservationManager::Node* ReservationManager::mergeSort(Node* start)
+{
+    if (start == nullptr || start->next == nullptr)
+    {
+        return start;
+    }
+
+    Node* slow = start;
+    Node* fast = start->next;
+
+    // Find the midpoint.
+    while (fast != nullptr && fast->next != nullptr)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    // Separate the two halves.
+    Node* right = slow->next;
+    slow->next = nullptr;
+
+    Node* sortedLeft = mergeSort(start);
+    Node* sortedRight = mergeSort(right);
+
+    return mergeSortedLists(sortedLeft, sortedRight);
+}
+
+void ReservationManager::sortByDate()
+{
+    head = mergeSort(head);
+}
+
