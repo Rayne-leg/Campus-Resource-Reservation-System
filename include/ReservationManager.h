@@ -23,16 +23,23 @@ public:
 
     void displayReservations() const;
 
-    bool searchReservation(const std::string& reservationID) const;
+    bool searchReservation(
+        const std::string& reservationID) const;
 
-    bool hasResourceDateConflict(const std::string& resourceID,
-                                 const std::string& reservationDate) const;
+    bool hasResourceDateConflict(
+        const std::string& resourceID,
+        const std::string& reservationDate) const;
 
-    bool removeReservation(const std::string& reservationID,
-                           Reservation& removedReservation);
+    bool removeReservation(
+        const std::string& reservationID,
+        Reservation& removedReservation);
 
-    bool editReservation(const std::string& reservationID,
-                         const std::string& newDate);
+    bool editReservation(
+        const std::string& reservationID,
+        const std::string& newDate);
+
+    int countReservationsForResource(
+        const std::string& resourceID) const;
 };
 
 #endif

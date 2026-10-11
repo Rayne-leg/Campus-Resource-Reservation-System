@@ -1,4 +1,4 @@
-#include "../include/ReservationManager.h"
+#include "ReservationManager.h"
 #include <iostream>
 
 ReservationManager::ReservationManager()
@@ -18,23 +18,22 @@ ReservationManager::~ReservationManager()
     }
 }
 
-bool ReservationManager::addReservation(const Reservation& reservation)
+bool ReservationManager::addReservation(
+    const Reservation& reservation)
 {
-    // Check for duplicate reservation ID
     if (searchReservation(reservation.getReservationID()))
     {
         return false;
     }
 
-    // Check if the same resource is already reserved on the same date
-    if (hasResourceDateConflict(reservation.getResourceID(),
-                                reservation.getReservationDate()))
+    if (hasResourceDateConflict(
+            reservation.getResourceID(),
+            reservation.getReservationDate()))
     {
         return false;
     }
 
     Node* newNode = new Node;
-
     newNode->data = reservation;
     newNode->next = head;
     head = newNode;
@@ -46,7 +45,7 @@ void ReservationManager::displayReservations() const
 {
     if (head == nullptr)
     {
-        std::cout << "No active reservations." << std::endl;
+        std::cout << "No active reservations.\n";
         return;
     }
 
@@ -55,26 +54,27 @@ void ReservationManager::displayReservations() const
     while (current != nullptr)
     {
         std::cout << "Reservation ID: "
-                  << current->data.getReservationID() << std::endl;
+                  << current->data.getReservationID() << '\n';
 
         std::cout << "Student ID: "
-                  << current->data.getStudentID() << std::endl;
+                  << current->data.getStudentID() << '\n';
 
         std::cout << "Student Name: "
-                  << current->data.getStudentName() << std::endl;
+                  << current->data.getStudentName() << '\n';
 
         std::cout << "Resource ID: "
-                  << current->data.getResourceID() << std::endl;
+                  << current->data.getResourceID() << '\n';
 
         std::cout << "Reservation Date: "
-                  << current->data.getReservationDate() << std::endl;
+                  << current->data.getReservationDate() << '\n';
 
-        std::cout << "------------------------" << std::endl;
+        std::cout << "------------------------\n";
 
         current = current->next;
     }
 }
 
+// Manual linear search.
 bool ReservationManager::searchReservation(
     const std::string& reservationID) const
 {
@@ -124,7 +124,6 @@ bool ReservationManager::removeReservation(
     {
         if (current->data.getReservationID() == reservationID)
         {
-            // Save reservation before deleting the node
             removedReservation = current->data;
 
             if (previous == nullptr)
@@ -157,8 +156,6 @@ bool ReservationManager::editReservation(
     {
         if (current->data.getReservationID() == reservationID)
         {
-            // Check that changing the date will not create
-            // a resource/date conflict with another reservation
             Node* check = head;
 
             while (check != nullptr)
@@ -182,4 +179,24 @@ bool ReservationManager::editReservation(
     }
 
     return false;
+}
+
+// Live count used by Favour's resource reports.
+int ReservationManager::countReservationsForResource(
+    const std::string& resourceID) const
+{
+    int count = 0;
+    Node* current = head;
+
+    while (current != nullptr)
+    {
+        if (current->data.getResourceID() == resourceID)
+        {
+            count++;
+        }
+
+        current = current->next;
+    }
+
+    return count;
 }
