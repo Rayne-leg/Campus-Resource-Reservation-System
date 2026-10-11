@@ -5,12 +5,25 @@
 #include <string>
 #include <vector>
 
+class ReservationManager;
+
 class ResourceManager
 {
 private:
     std::vector<Resource> resources;
 
 public:
+    // Read-only access lets reports include every resource, including zero counts.
+    const std::vector<Resource>& getResources() const;
+
+    // Booking availability is based on active reservations for the requested date.
+    bool isResourceAvailableOnDate(const std::string& resourceID,
+                                   const std::string& date,
+                                   const ReservationManager& reservations) const;
+
+    void displayAvailabilityForDate(const std::string& date,
+                                    const ReservationManager& reservations) const;
+
     bool loadResources(const std::string& filename);
 
     void displayAllResources() const;

@@ -1,0 +1,7 @@
+reservation_count_test: All reservation count tests passed.
+reservation_sort_test: All reservation sort tests passed.
+reservation_load_test: All reservation loading tests passed.
+reservation_loader_errors_test: All reservation loader error tests passed.
+Expected loader rejection diagnostics: 13 lines
+test_favour_features: PASS: date-specific availability, queue order, live report counts, ties, zero counts, distinct students, and empty-state checks.
+Integrated application: strict-warning compilation passed.

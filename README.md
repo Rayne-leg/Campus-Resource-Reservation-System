@@ -1,116 +1,62 @@
-Campus Resource Reservation System
-CSCE 2110 – Project 1, Milestone 1
+# Campus Resource Reservation System — Ken/Favour integration
 
-Project Overview
+CSCE 2110, Project 1 Final integration candidate. Based on the GitHub reservations branch ZIP supplied on October 11, 2026, with Favour's report and date/waiting-list changes. See docs/INTEGRATION_STATUS.md for verified checks and remaining team work.
 
-The Campus Resource Reservation System is a C++ menu-driven program used to manage university resources and student reservations.
+## Build and run on CELL
 
-The system uses:
-- A vector to store campus resources
-- One linked list to store all active reservations
-- A queue to manage waiting-list requests
-- A stack to store cancellation history
+From the project root:
 
-Milestone 1 Features
-
-Resource Management
-- Loads resource information from data/resources.txt
-- Stores resources in a vector
-- Displays all resources
-- Displays resource availability
-- Validates resource IDs
-- Checks and updates resource availability
-
-Reservation Management
-- Creates reservations
-- Cancels reservations
-- Displays active reservations
-- Searches for reservations
-- Edits reservation dates
-- Prevents duplicate reservation IDs
-- Checks for resource/date conflicts
-
-Active Reservation Linked List
-- Uses one linked list for all active reservations
-- Supports insertion
-- Supports removal
-- Supports traversal and display
-- Supports searching
-- Includes memory cleanup
-
-Waiting List Queue
-- Adds students when a resource is unavailable
-- Processes students in FIFO order
-- Displays the waiting list
-- Automatically promotes the next matching student when a reservation is cancelled
-- Handles an empty waiting list
-
-Cancellation History Stack
-- Stores cancelled reservations
-- Displays cancellation history
-- Restores the most recently cancelled reservation
-- Handles an empty cancellation stack
-
-Project Structure
-
-include/
-Contains header files for project classes and data structures.
-
-src/
-Contains C++ implementation files and the main program.
-
-data/
-Contains resources.txt, which stores the campus resource information.
-
-Compilation
-
-The project was compiled and tested on the UNT CSE CELL machines using C++17.
-
-Example compile command:
-
-g++ -std=c++17 -Iinclude src/Resource.cpp src/ResourceManager.cpp src/WaitingList.cpp src/Reservation.cpp src/ReservationManager.cpp src/CancellationStack.cpp src/main.cpp -o campus_reservation
-
-Run command:
-
+```bash
+g++ -std=c++17 -Wall -Wextra -pedantic -Iinclude src/*.cpp -o campus_reservation
 ./campus_reservation
+```
 
-Team Members
+Run all five component test programs and the integrated menu scenarios:
 
-Favour
-- Resource Management
-- Waiting List Queue
-- Final integration, testing, and documentation
+```bash
+bash tests/run_tests.sh
+```
 
-Ken
-- Reservation Management
-- Active Reservation Linked List
+The runner requires g++ with C++17 and Python 3. It builds in a temporary directory and cleans its binaries. Success ends with ALL INTEGRATION CHECKS PASSED. Loader-error tests intentionally reject invalid data; their expected diagnostics are captured by the runner and shown if a test fails.
 
-Ademola
-- Cancellation History Stack
-- Main Program Integration
+## Menu
 
-Testing
+| Option | Action |
+|---|---|
+| 1 | Reserve a resource or join its matching-date waiting list |
+| 2 | Active reservations report |
+| 3 | Edit a reservation date |
+| 4 | Cancel and promote the first eligible resource/date waiter |
+| 5 | Restore the most recent cancellation; preserve history if blocked |
+| 6 | Display resource information and legacy file status |
+| 7 | Check resource availability for a supplied date |
+| 8 | Display waiting requests |
+| 9 | Display cancellation history |
+| 10 | Manual linear search by reservation ID |
+| 11 | Manual stable merge sort by date, then display reservations |
+| 12 | Resource utilization: all resources and current active counts |
+| 13 | Most requested: resources tied for the largest active count |
+| 14 | Waiting-list statistics: distinct students and requests per resource |
+| 0 | Exit |
 
-The completed Milestone 1 program was tested for:
-- Resource file loading
-- Resource display
-- Resource availability display and updates
-- Reservation creation
-- Reservation cancellation
-- Active reservation display
-- Resource/date conflict validation
-- Duplicate reservation ID validation
-- Waiting-list FIFO behavior
-- Automatic waiting-list promotion
-- Empty waiting-list handling
-- Cancellation history
-- Undo cancellation
-- Empty cancellation-stack handling
-- Invalid menu input
-- Invalid resource IDs
+Dates accept YYYY-MM-DD or MM/DD/YYYY, are calendar-validated, and normalize to YYYY-MM-DD. Booking conflicts use the resource/date pair, not a global status flag. Availability information in resources.txt is legacy resource metadata, not the reservation calendar.
 
-The full integrated program compiled and ran successfully on the UNT CSE CELL machines.
+## Data and structures
 
-GitHub Repository
+- Resources: vector loaded from data/resources.txt.
+- All active reservations: one owning linked list loaded from data/reservations.txt.
+- Waiting requests: one FIFO queue carrying resource and date information; matching-date removal preserves order among remaining nodes.
+- Cancellation history: one LIFO stack.
 
-https://github.com/Rayne-leg/Campus-Resource-Reservation-System
+Reservation format: reservationID|studentID|studentName|resourceID|date. New IDs are generated as RES1, RES2, and so on, checking active IDs. Runtime changes are in memory and do not persist to input files. Sample reservations are not automatically expired.
+
+## Team documentation
+
+- docs/KEN_RESERVATION_WORK.md: Ken's submitted component notes and reported commits/testing.
+- docs/FAVOUR_COMPLEXITY.md: Favour's actual component complexity.
+- docs/INTEGRATION_STATUS.md: observed integration tests, pending CELL/team/GitHub work, and behavioral limits.
+- docs/TEAM_UPDATE.txt: status text to adapt after the CELL run.
+- tests/component_results.txt and tests/integration_menu_results.txt: observed local outputs.
+- integration/changes_from_reservations.patch: source/documentation changes against the supplied reservations snapshot.
+
+The instructor's final deliverables also require the actual GitHub URL, completed group contribution report, final testing, and demonstration. This candidate does not claim a final shared merge or completed submission.

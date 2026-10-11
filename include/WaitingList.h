@@ -43,9 +43,27 @@ public:
 
     bool dequeue(WaitingRequest& removedRequest);
 
+    // Remove the earliest matching request; other requests keep their FIFO order.
+    bool dequeueForResourceDate(const std::string& resourceID,
+                                const std::string& date,
+                                WaitingRequest& removedRequest);
+
+    bool peekForResourceDate(const std::string& resourceID,
+                             const std::string& date,
+                             WaitingRequest& request) const;
+
+    int countWaitingRequestsForResource(const std::string& resourceID) const;
+
+    // A student waiting for two dates is counted once in the student statistic.
+    int countWaitingStudentsForResource(const std::string& resourceID) const;
+
+    bool hasWaitingRequest(const std::string& studentID,
+                           const std::string& resourceID,
+                           const std::string& date) const;
+
     void displayWaitingList() const;
 
     bool isEmpty() const;
 };
 
-#endif 
+#endif

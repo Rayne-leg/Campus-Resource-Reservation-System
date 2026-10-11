@@ -2,6 +2,99 @@
 
 #include <iostream>
 
+bool WaitingList::peekForResourceDate(const std::string& resourceID,
+                                     const std::string& date,
+                                     WaitingRequest& request) const
+{
+    for (Node* current = front; current != nullptr; current = current->next)
+    {
+        if (current->request.resourceID == resourceID &&
+            current->request.reservationDate == date)
+        {
+            request = current->request;
+            return true;
+        }
+    }
+    return false;
+}
+
+bool WaitingList::dequeueForResourceDate(
+    const std::string& resourceID,
+    const std::string& date,
+    WaitingRequest& removedRequest)
+{
+    Node* current = front;
+    Node* previous = nullptr;
+    while (current != nullptr)
+    {
+        if (current->request.resourceID == resourceID &&
+            current->request.reservationDate == date)
+        {
+            removedRequest = current->request;
+            if (previous == nullptr)
+                front = current->next;
+            else
+                previous->next = current->next;
+
+            if (current == rear)
+                rear = previous;
+
+            delete current;
+            return true;
+        }
+        previous = current;
+        current = current->next;
+    }
+    return false;
+}
+
+int WaitingList::countWaitingRequestsForResource(
+    const std::string& resourceID) const
+{
+    int count = 0;
+    for (Node* current = front; current != nullptr; current = current->next)
+        if (current->request.resourceID == resourceID)
+            ++count;
+    return count;
+}
+
+int WaitingList::countWaitingStudentsForResource(
+    const std::string& resourceID) const
+{
+    int count = 0;
+    for (Node* current = front; current != nullptr; current = current->next)
+    {
+        if (current->request.resourceID != resourceID)
+            continue;
+
+        bool appearedEarlier = false;
+        for (Node* earlier = front; earlier != current; earlier = earlier->next)
+        {
+            if (earlier->request.resourceID == resourceID &&
+                earlier->request.studentID == current->request.studentID)
+            {
+                appearedEarlier = true;
+                break;
+            }
+        }
+        if (!appearedEarlier)
+            ++count;
+    }
+    return count;
+}
+
+bool WaitingList::hasWaitingRequest(const std::string& studentID,
+                                    const std::string& resourceID,
+                                    const std::string& date) const
+{
+    for (Node* current = front; current != nullptr; current = current->next)
+        if (current->request.studentID == studentID &&
+            current->request.resourceID == resourceID &&
+            current->request.reservationDate == date)
+            return true;
+    return false;
+}
+
 WaitingRequest::WaitingRequest()
 {
     studentID = "";
@@ -118,4 +211,4 @@ void WaitingList::displayWaitingList() const
 bool WaitingList::isEmpty() const
 {
     return front == nullptr;
-} 
+}

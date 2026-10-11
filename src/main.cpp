@@ -6,6 +6,7 @@
 #include "ReservationManager.h"
 #include "WaitingList.h"
 #include "CancellationStack.h"
+#include "ResourceReports.h"
 
 int nextReservationNumber = 1;
 
@@ -23,6 +24,9 @@ void printMenu()
     std::cout << "9. Display cancellation history\n";
     std::cout << "10. Search reservation by ID\n";
     std::cout << "11. Sort active reservations by date\n";
+    std::cout << "12. Resource utilization report\n";
+    std::cout << "13. Most requested resources report\n";
+    std::cout << "14. Waiting-list statistics report\n";
     std::cout << "0. Exit\n";
     std::cout << "Choose an option: ";
 }
@@ -116,14 +120,19 @@ void handleReserve(
         return;
     }
 
-    // Replace this policy with Favour's date-specific integration.
-    if (!resourceManager.isResourceAvailable(resourceID) ||
-        reservationManager.hasResourceDateConflict(resourceID, date))
+    if (!resourceManager.isResourceAvailableOnDate(
+            resourceID, date, reservationManager))
     {
+        if (waitingList.hasWaitingRequest(studentID, resourceID, date))
+        {
+            std::cout << "You are already waiting for that resource and date.\n";
+            return;
+        }
         waitingList.enqueue(
             WaitingRequest(studentID, studentName, resourceID, date));
 
-        std::cout << "Resource unavailable. Added to waiting list.\n";
+        std::cout << "Resource reserved for " << date
+                  << ". Added to waiting list.\n";
         return;
     }
 
@@ -136,7 +145,6 @@ void handleReserve(
         return;
     }
 
-    resourceManager.setAvailability(resourceID, "Unavailable");
     std::cout << "Reservation " << id << " created.\n";
 }
 
@@ -222,56 +230,30 @@ void handleCancel(
         "today"));
 
     WaitingRequest request;
-    WaitingList holding;
-    bool promoted = false;
-
-    // Replace with Favour's resource/date promotion integration.
-    while (waitingList.dequeue(request))
+    if (resourceManager.isResourceAvailableOnDate(
+            removed.getResourceID(), removed.getReservationDate(),
+            reservationManager) &&
+        waitingList.peekForResourceDate(
+            removed.getResourceID(), removed.getReservationDate(), request))
     {
-        if (!promoted &&
-            request.resourceID == removed.getResourceID())
+        std::string newID = generateReservationID(reservationManager);
+        Reservation replacement(
+            newID, request.studentID, request.studentName,
+            request.resourceID, request.reservationDate);
+        if (reservationManager.addReservation(replacement))
         {
-            std::string newID = generateReservationID(reservationManager);
-
-            Reservation replacement(
-                newID, request.studentID, request.studentName,
-                request.resourceID, request.reservationDate);
-
-            if (reservationManager.addReservation(replacement))
-            {
-                std::cout << "Promoted " << request.studentName
-                          << " to reservation " << newID << ".\n";
-                promoted = true;
-            }
-            else
-            {
-                holding.enqueue(request);
-            }
+            waitingList.dequeueForResourceDate(
+                removed.getResourceID(), removed.getReservationDate(), request);
+            std::cout << "Promoted " << request.studentName
+                      << " to reservation " << newID << ".\n";
         }
-        else
-        {
-            holding.enqueue(request);
-        }
-    }
-
-    while (holding.dequeue(request))
-    {
-        waitingList.enqueue(request);
-    }
-
-    if (!promoted &&
-        reservationManager.countReservationsForResource(
-            removed.getResourceID()) == 0)
-    {
-        resourceManager.setAvailability(
-            removed.getResourceID(), "Available");
     }
 
     std::cout << "Reservation " << id << " cancelled.\n";
 }
 
 void handleUndo(
-    ResourceManager& resourceManager,
+    ResourceManager&,
     ReservationManager& reservationManager,
     CancellationStack& cancellationStack)
 {
@@ -295,9 +277,6 @@ void handleUndo(
         std::cout << "Cannot restore: duplicate ID or date conflict.\n";
         return;
     }
-
-    resourceManager.setAvailability(
-        cancelled.resourceID, "Unavailable");
 
     std::cout << "Restored reservation "
               << cancelled.reservationID << ".\n";
@@ -326,6 +305,12 @@ int main()
         std::cout
             << "Warning: reservation file missing or some rows rejected.\n";
     }
+
+    const ReservationCounter countForReports =
+        [&reservationManager](const std::string& resourceID)
+        {
+            return reservationManager.countReservationsForResource(resourceID);
+        };
 
     int choice = -1;
 
@@ -382,8 +367,13 @@ int main()
                 break;
 
             case 7:
-                resourceManager.displayAvailability();
+            {
+                std::string date;
+                if (readDate(date))
+                    resourceManager.displayAvailabilityForDate(
+                        date, reservationManager);
                 break;
+            }
 
             case 8:
                 waitingList.displayWaitingList();
@@ -401,6 +391,21 @@ int main()
                 reservationManager.sortByDate();
                 std::cout << "\n===== RESERVATIONS SORTED BY DATE =====\n";
                 reservationManager.displayReservations();
+                break;
+
+            case 12:
+                ResourceReports::displayResourceUtilization(
+                    resourceManager, countForReports);
+                break;
+
+            case 13:
+                ResourceReports::displayMostRequestedResources(
+                    resourceManager, countForReports);
+                break;
+
+            case 14:
+                ResourceReports::displayWaitingListStatistics(
+                    resourceManager, waitingList);
                 break;
 
             default:

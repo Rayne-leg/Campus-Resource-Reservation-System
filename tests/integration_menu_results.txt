@@ -1,0 +1,1056 @@
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option:
+===== RESOURCE UTILIZATION =====
+ID          Name                     Active reservations
+R101        Study Room 101           2
+R102        Study Room 102           0
+R103        Study Room 103           2
+R104        Study Room 104           0
+R105        Laptop 01                2
+R106        Laptop 02                0
+R107        Laptop 03                2
+R108        Laptop 04                0
+R109        Calculator 01            2
+R110        Calculator 02            0
+R111        3D Printer               2
+R112        Oscilloscope             0
+R113        Arduino Kit              2
+R114        Math Tutoring            0
+R115        CS Tutoring              2
+R116        Study Room 201           0
+R117        Laptop 05                2
+R118        Calculator 03            0
+R119        VR Headset               2
+R120        Physics Tutoring         0
+Total active reservations: 20
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option:
+===== MOST REQUESTED RESOURCES =====
+Measured by current active reservation counts.
+ID          Name                     Active reservations
+R101        Study Room 101           2
+R103        Study Room 103           2
+R105        Laptop 01                2
+R107        Laptop 03                2
+R109        Calculator 01            2
+R111        3D Printer               2
+R113        Arduino Kit              2
+R115        CS Tutoring              2
+R117        Laptop 05                2
+R119        VR Headset               2
+All resources tied for the highest count are shown.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option:
+===== WAITING-LIST STATISTICS =====
+ID          Name                     Waiting students    Waiting requests
+R101        Study Room 101           0                   0
+R102        Study Room 102           0                   0
+R103        Study Room 103           0                   0
+R104        Study Room 104           0                   0
+R105        Laptop 01                0                   0
+R106        Laptop 02                0                   0
+R107        Laptop 03                0                   0
+R108        Laptop 04                0                   0
+R109        Calculator 01            0                   0
+R110        Calculator 02            0                   0
+R111        3D Printer               0                   0
+R112        Oscilloscope             0                   0
+R113        Arduino Kit              0                   0
+R114        Math Tutoring            0                   0
+R115        CS Tutoring              0                   0
+R116        Study Room 201           0                   0
+R117        Laptop 05                0                   0
+R118        Calculator 03            0                   0
+R119        VR Headset               0                   0
+R120        Physics Tutoring         0                   0
+Waiting students counts each student ID once per resource.
+Waiting requests counts each queued date request.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter Reservation ID to search: Reservation 301 found.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter Reservation ID to search: Reservation not found.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option:
+===== RESERVATIONS SORTED BY DATE =====
+Reservation ID: 316
+Student ID: 1016
+Student Name: Henry White
+Resource ID: R111
+Reservation Date: 2026-09-15
+------------------------
+Reservation ID: 301
+Student ID: 1001
+Student Name: Alice Smith
+Resource ID: R101
+Reservation Date: 2026-09-15
+------------------------
+Reservation ID: 317
+Student ID: 1017
+Student Name: Amelia Harris
+Resource ID: R113
+Reservation Date: 2026-09-16
+------------------------
+Reservation ID: 302
+Student ID: 1002
+Student Name: Bob Johnson
+Resource ID: R103
+Reservation Date: 2026-09-16
+------------------------
+Reservation ID: 318
+Student ID: 1018
+Student Name: Daniel Martin
+Resource ID: R115
+Reservation Date: 2026-09-17
+------------------------
+Reservation ID: 303
+Student ID: 1003
+Student Name: Sara Lee
+Resource ID: R105
+Reservation Date: 2026-09-17
+------------------------
+Reservation ID: 319
+Student ID: 1019
+Student Name: Charlotte Thompson
+Resource ID: R117
+Reservation Date: 2026-09-18
+------------------------
+Reservation ID: 304
+Student ID: 1004
+Student Name: David Kim
+Resource ID: R107
+Reservation Date: 2026-09-18
+------------------------
+Reservation ID: 320
+Student ID: 1020
+Student Name: William Garcia
+Resource ID: R119
+Reservation Date: 2026-09-19
+------------------------
+Reservation ID: 305
+Student ID: 1005
+Student Name: Emma Davis
+Resource ID: R109
+Reservation Date: 2026-09-19
+------------------------
+Reservation ID: 306
+Student ID: 1006
+Student Name: Noah Wilson
+Resource ID: R111
+Reservation Date: 2026-09-20
+------------------------
+Reservation ID: 307
+Student ID: 1007
+Student Name: Mia Brown
+Resource ID: R113
+Reservation Date: 2026-09-21
+------------------------
+Reservation ID: 308
+Student ID: 1008
+Student Name: Liam Garcia
+Resource ID: R115
+Reservation Date: 2026-09-22
+------------------------
+Reservation ID: 309
+Student ID: 1009
+Student Name: Olivia Martinez
+Resource ID: R117
+Reservation Date: 2026-09-23
+------------------------
+Reservation ID: 310
+Student ID: 1010
+Student Name: Ethan Miller
+Resource ID: R119
+Reservation Date: 2026-09-24
+------------------------
+Reservation ID: 311
+Student ID: 1011
+Student Name: Ava Anderson
+Resource ID: R101
+Reservation Date: 2026-09-25
+------------------------
+Reservation ID: 312
+Student ID: 1012
+Student Name: Lucas Taylor
+Resource ID: R103
+Reservation Date: 2026-09-26
+------------------------
+Reservation ID: 313
+Student ID: 1013
+Student Name: Sophia Moore
+Resource ID: R105
+Reservation Date: 2026-09-27
+------------------------
+Reservation ID: 314
+Student ID: 1014
+Student Name: James Thomas
+Resource ID: R107
+Reservation Date: 2026-09-28
+------------------------
+Reservation ID: 315
+Student ID: 1015
+Student Name: Isabella Jackson
+Resource ID: R109
+Reservation Date: 2026-09-29
+------------------------
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter date (YYYY-MM-DD or MM/DD/YYYY): Reservation RES1 created.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter date (YYYY-MM-DD or MM/DD/YYYY): Reservation RES2 created.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter date (YYYY-MM-DD or MM/DD/YYYY): Resource reserved for 2026-10-12. Added to waiting list.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter date (YYYY-MM-DD or MM/DD/YYYY): Resource reserved for 2026-10-11. Added to waiting list.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter date (YYYY-MM-DD or MM/DD/YYYY): You are already waiting for that resource and date.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option:
+===== WAITING-LIST STATISTICS =====
+ID          Name                     Waiting students    Waiting requests
+R101        Study Room 101           2                   2
+R102        Study Room 102           0                   0
+R103        Study Room 103           0                   0
+R104        Study Room 104           0                   0
+R105        Laptop 01                0                   0
+R106        Laptop 02                0                   0
+R107        Laptop 03                0                   0
+R108        Laptop 04                0                   0
+R109        Calculator 01            0                   0
+R110        Calculator 02            0                   0
+R111        3D Printer               0                   0
+R112        Oscilloscope             0                   0
+R113        Arduino Kit              0                   0
+R114        Math Tutoring            0                   0
+R115        CS Tutoring              0                   0
+R116        Study Room 201           0                   0
+R117        Laptop 05                0                   0
+R118        Calculator 03            0                   0
+R119        VR Headset               0                   0
+R120        Physics Tutoring         0                   0
+Waiting students counts each student ID once per resource.
+Waiting requests counts each queued date request.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter Reservation ID to cancel: Promoted Student Four to reservation RES3.
+Reservation RES1 cancelled.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option:
+===== WAITING LIST =====
+Student ID: S3
+Student Name: Student Three
+Resource ID: R101
+Reservation Date: 2026-10-12
+------------------------
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option:
+===== WAITING-LIST STATISTICS =====
+ID          Name                     Waiting students    Waiting requests
+R101        Study Room 101           1                   1
+R102        Study Room 102           0                   0
+R103        Study Room 103           0                   0
+R104        Study Room 104           0                   0
+R105        Laptop 01                0                   0
+R106        Laptop 02                0                   0
+R107        Laptop 03                0                   0
+R108        Laptop 04                0                   0
+R109        Calculator 01            0                   0
+R110        Calculator 02            0                   0
+R111        3D Printer               0                   0
+R112        Oscilloscope             0                   0
+R113        Arduino Kit              0                   0
+R114        Math Tutoring            0                   0
+R115        CS Tutoring              0                   0
+R116        Study Room 201           0                   0
+R117        Laptop 05                0                   0
+R118        Calculator 03            0                   0
+R119        VR Headset               0                   0
+R120        Physics Tutoring         0                   0
+Waiting students counts each student ID once per resource.
+Waiting requests counts each queued date request.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Cannot restore: duplicate ID or date conflict.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option:
+===== CANCELLATION HISTORY (most recent first) =====
+Reservation ID: RES1
+Student ID: S1
+Student Name: Favour
+Resource ID: R101
+Original Date: 2026-10-11
+Cancelled On: today
+------------------------
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter Reservation ID to cancel: Reservation RES3 cancelled.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option:
+===== WAITING LIST =====
+Student ID: S3
+Student Name: Student Three
+Resource ID: R101
+Reservation Date: 2026-10-12
+------------------------
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Restored reservation RES3.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter Reservation ID to cancel: Promoted Student Three to reservation RES4.
+Reservation RES2 cancelled.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Waiting list is empty.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option:
+===== WAITING-LIST STATISTICS =====
+ID          Name                     Waiting students    Waiting requests
+R101        Study Room 101           0                   0
+R102        Study Room 102           0                   0
+R103        Study Room 103           0                   0
+R104        Study Room 104           0                   0
+R105        Laptop 01                0                   0
+R106        Laptop 02                0                   0
+R107        Laptop 03                0                   0
+R108        Laptop 04                0                   0
+R109        Calculator 01            0                   0
+R110        Calculator 02            0                   0
+R111        3D Printer               0                   0
+R112        Oscilloscope             0                   0
+R113        Arduino Kit              0                   0
+R114        Math Tutoring            0                   0
+R115        CS Tutoring              0                   0
+R116        Study Room 201           0                   0
+R117        Laptop 05                0                   0
+R118        Calculator 03            0                   0
+R119        VR Headset               0                   0
+R120        Physics Tutoring         0                   0
+Waiting students counts each student ID once per resource.
+Waiting requests counts each queued date request.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option:
+===== RESOURCE UTILIZATION =====
+ID          Name                     Active reservations
+R101        Study Room 101           4
+R102        Study Room 102           0
+R103        Study Room 103           2
+R104        Study Room 104           0
+R105        Laptop 01                2
+R106        Laptop 02                0
+R107        Laptop 03                2
+R108        Laptop 04                0
+R109        Calculator 01            2
+R110        Calculator 02            0
+R111        3D Printer               2
+R112        Oscilloscope             0
+R113        Arduino Kit              2
+R114        Math Tutoring            0
+R115        CS Tutoring              2
+R116        Study Room 201           0
+R117        Laptop 05                2
+R118        Calculator 03            0
+R119        VR Headset               2
+R120        Physics Tutoring         0
+Total active reservations: 22
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option:
+===== MOST REQUESTED RESOURCES =====
+Measured by current active reservation counts.
+ID          Name                     Active reservations
+R101        Study Room 101           4
+All resources tied for the highest count are shown.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter date (YYYY-MM-DD or MM/DD/YYYY):
+===== RESOURCE AVAILABILITY FOR 2026-10-13 =====
+ID          Name                     Availability
+R101        Study Room 101           Available
+R102        Study Room 102           Available
+R103        Study Room 103           Available
+R104        Study Room 104           Available
+R105        Laptop 01                Available
+R106        Laptop 02                Available
+R107        Laptop 03                Available
+R108        Laptop 04                Available
+R109        Calculator 01            Available
+R110        Calculator 02            Available
+R111        3D Printer               Available
+R112        Oscilloscope             Available
+R113        Arduino Kit              Available
+R114        Math Tutoring            Available
+R115        CS Tutoring              Available
+R116        Study Room 201           Available
+R117        Laptop 05                Available
+R118        Calculator 03            Available
+R119        VR Headset               Available
+R120        Physics Tutoring         Available
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter date (YYYY-MM-DD or MM/DD/YYYY): Invalid calendar date.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Please enter a number.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Invalid option.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter Resource ID: That resource does not exist.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Student name cannot be empty.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Goodbye.
+
+===== EMPTY-DATA FIFO SCENARIO =====
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter date (YYYY-MM-DD or MM/DD/YYYY): Reservation RES1 created.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter date (YYYY-MM-DD or MM/DD/YYYY): Resource reserved for 2026-10-11. Added to waiting list.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter date (YYYY-MM-DD or MM/DD/YYYY): Resource reserved for 2026-10-11. Added to waiting list.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter Reservation ID to cancel: Promoted First Waiter to reservation RES2.
+Reservation RES1 cancelled.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option:
+===== WAITING LIST =====
+Student ID: C
+Student Name: Second Waiter
+Resource ID: R101
+Reservation Date: 2026-10-11
+------------------------
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Enter Reservation ID to cancel: Promoted Second Waiter to reservation RES3.
+Reservation RES2 cancelled.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Waiting list is empty.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+12. Resource utilization report
+13. Most requested resources report
+14. Waiting-list statistics report
+0. Exit
+Choose an option: Goodbye.

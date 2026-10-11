@@ -1,9 +1,55 @@
 #include "ResourceManager.h"
+#include "ReservationManager.h"
 
 #include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
+
+const std::vector<Resource>& ResourceManager::getResources() const
+{
+    return resources;
+}
+
+bool ResourceManager::isResourceAvailableOnDate(
+    const std::string& resourceID,
+    const std::string& date,
+    const ReservationManager& reservations) const
+{
+    std::string normalizedDate;
+    return ReservationManager::normalizeDate(date, normalizedDate) &&
+           resourceExists(resourceID) &&
+           !reservations.hasResourceDateConflict(resourceID, normalizedDate);
+}
+
+void ResourceManager::displayAvailabilityForDate(
+    const std::string& date,
+    const ReservationManager& reservations) const
+{
+    std::string normalizedDate;
+    if (!ReservationManager::normalizeDate(date, normalizedDate))
+    {
+        std::cout << "Invalid calendar date.\n";
+        return;
+    }
+    std::cout << "\n===== RESOURCE AVAILABILITY FOR " << normalizedDate << " =====\n";
+    if (resources.empty())
+    {
+        std::cout << "No resources loaded.\n";
+        return;
+    }
+
+    std::cout << std::left << std::setw(12) << "ID"
+              << std::setw(25) << "Name" << "Availability\n";
+    for (const Resource& resource : resources)
+    {
+        std::cout << std::left << std::setw(12) << resource.getResourceID()
+                  << std::setw(25) << resource.getResourceName()
+                  << (isResourceAvailableOnDate(resource.getResourceID(), normalizedDate,
+                                                reservations)
+                          ? "Available" : "Reserved") << '\n';
+    }
+}
 
 bool ResourceManager::loadResources(const std::string& filename)
 {

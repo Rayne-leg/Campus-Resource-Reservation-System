@@ -1,0 +1,5 @@
+/campus_reservation
+/test_favour
+*.o
+/tests/loader_errors.tmp
+__pycache__/
