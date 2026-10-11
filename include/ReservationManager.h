@@ -47,6 +47,12 @@ public:
         const std::string& resourceID) const;
 
     void sortByDate();
+
+    static bool normalizeDate(
+        const std::string& input,
+        std::string& output);
+
+    bool loadReservations(const std::string& filename);
 };
 
 #endif

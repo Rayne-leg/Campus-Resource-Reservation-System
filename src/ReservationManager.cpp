@@ -272,3 +272,150 @@ void ReservationManager::sortByDate()
     head = mergeSort(head);
 }
 
+
+#include <fstream>
+#include <sstream>
+
+// Accept both date formats and validate the calendar date.
+bool ReservationManager::normalizeDate(
+    const std::string& input,
+    std::string& output)
+{
+    if (input.size() != 10)
+    {
+        return false;
+    }
+
+    std::string date;
+
+    if (input[4] == '-' && input[7] == '-')
+    {
+        date = input;
+    }
+    else if (input[2] == '/' && input[5] == '/')
+    {
+        date = input.substr(6, 4) + "-" +
+               input.substr(0, 2) + "-" +
+               input.substr(3, 2);
+    }
+    else
+    {
+        return false;
+    }
+
+    for (std::size_t i = 0; i < date.size(); i++)
+    {
+        if (i == 4 || i == 7)
+        {
+            continue;
+        }
+
+        if (date[i] < '0' || date[i] > '9')
+        {
+            return false;
+        }
+    }
+
+    int year = std::stoi(date.substr(0, 4));
+    int month = std::stoi(date.substr(5, 2));
+    int day = std::stoi(date.substr(8, 2));
+
+    if (year < 1 || month < 1 || month > 12)
+    {
+        return false;
+    }
+
+    int daysInMonth[] = {
+        31, 28, 31, 30, 31, 30,
+        31, 31, 30, 31, 30, 31
+    };
+
+    bool leapYear =
+        year % 400 == 0 ||
+        (year % 4 == 0 && year % 100 != 0);
+
+    if (leapYear)
+    {
+        daysInMonth[1] = 29;
+    }
+
+    if (day < 1 || day > daysInMonth[month - 1])
+    {
+        return false;
+    }
+
+    output = date;
+    return true;
+}
+
+bool ReservationManager::loadReservations(
+    const std::string& filename)
+{
+    std::ifstream file(filename);
+
+    if (!file.is_open())
+    {
+        std::cerr << "Could not open " << filename << '\n';
+        return false;
+    }
+
+    std::string line;
+    int lineNumber = 0;
+    bool allValid = true;
+
+    while (std::getline(file, line))
+    {
+        lineNumber++;
+
+        if (!line.empty() && line.back() == '\r')
+        {
+            line.pop_back();
+        }
+
+        if (line.empty())
+        {
+            continue;
+        }
+
+        std::stringstream row(line);
+        std::string fields[5];
+        bool valid = true;
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (!std::getline(row, fields[i], '|') ||
+                fields[i].empty())
+            {
+                valid = false;
+            }
+        }
+
+        if (!std::getline(row, fields[4]) ||
+            fields[4].find('|') != std::string::npos)
+        {
+            valid = false;
+        }
+
+        std::string date;
+
+        if (!valid || !normalizeDate(fields[4], date))
+        {
+            std::cerr << "Invalid reservation line "
+                      << lineNumber << '\n';
+            allValid = false;
+            continue;
+        }
+
+        Reservation reservation(
+            fields[0], fields[1], fields[2], fields[3], date);
+
+        if (!addReservation(reservation))
+        {
+            std::cerr << "Duplicate ID or date conflict on line "
+                      << lineNumber << '\n';
+            allValid = false;
+        }
+    }
+
+    return allValid;
+}
