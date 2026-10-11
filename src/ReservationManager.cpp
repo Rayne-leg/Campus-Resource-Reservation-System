@@ -1,5 +1,7 @@
 #include "ReservationManager.h"
+#include <fstream>
 #include <iostream>
+#include <sstream>
 
 ReservationManager::ReservationManager()
 {
@@ -21,20 +23,31 @@ ReservationManager::~ReservationManager()
 bool ReservationManager::addReservation(
     const Reservation& reservation)
 {
+    std::string date;
+
+    if (reservation.getReservationID().empty() ||
+        reservation.getStudentID().empty() ||
+        reservation.getStudentName().find_first_not_of(" \t\r") ==
+            std::string::npos ||
+        reservation.getResourceID().empty() ||
+        !normalizeDate(reservation.getReservationDate(), date))
+    {
+        return false;
+    }
+
     if (searchReservation(reservation.getReservationID()))
     {
         return false;
     }
 
-    if (hasResourceDateConflict(
-            reservation.getResourceID(),
-            reservation.getReservationDate()))
+    if (hasResourceDateConflict(reservation.getResourceID(), date))
     {
         return false;
     }
 
     Node* newNode = new Node;
     newNode->data = reservation;
+    newNode->data.setReservationDate(date);
     newNode->next = head;
     head = newNode;
 
@@ -55,19 +68,14 @@ void ReservationManager::displayReservations() const
     {
         std::cout << "Reservation ID: "
                   << current->data.getReservationID() << '\n';
-
         std::cout << "Student ID: "
                   << current->data.getStudentID() << '\n';
-
         std::cout << "Student Name: "
                   << current->data.getStudentName() << '\n';
-
         std::cout << "Resource ID: "
                   << current->data.getResourceID() << '\n';
-
         std::cout << "Reservation Date: "
                   << current->data.getReservationDate() << '\n';
-
         std::cout << "------------------------\n";
 
         current = current->next;
@@ -97,12 +105,19 @@ bool ReservationManager::hasResourceDateConflict(
     const std::string& resourceID,
     const std::string& reservationDate) const
 {
+    std::string date;
+
+    if (!normalizeDate(reservationDate, date))
+    {
+        return false;
+    }
+
     Node* current = head;
 
     while (current != nullptr)
     {
         if (current->data.getResourceID() == resourceID &&
-            current->data.getReservationDate() == reservationDate)
+            current->data.getReservationDate() == date)
         {
             return true;
         }
@@ -150,6 +165,13 @@ bool ReservationManager::editReservation(
     const std::string& reservationID,
     const std::string& newDate)
 {
+    std::string date;
+
+    if (!normalizeDate(newDate, date))
+    {
+        return false;
+    }
+
     Node* current = head;
 
     while (current != nullptr)
@@ -163,7 +185,7 @@ bool ReservationManager::editReservation(
                 if (check != current &&
                     check->data.getResourceID() ==
                         current->data.getResourceID() &&
-                    check->data.getReservationDate() == newDate)
+                    check->data.getReservationDate() == date)
                 {
                     return false;
                 }
@@ -171,7 +193,7 @@ bool ReservationManager::editReservation(
                 check = check->next;
             }
 
-            current->data.setReservationDate(newDate);
+            current->data.setReservationDate(date);
             return true;
         }
 
@@ -181,7 +203,6 @@ bool ReservationManager::editReservation(
     return false;
 }
 
-// Counts current active reservations for one resource: O(n).
 int ReservationManager::countReservationsForResource(
     const std::string& resourceID) const
 {
@@ -201,7 +222,6 @@ int ReservationManager::countReservationsForResource(
     return count;
 }
 
-// Combines two lists that are already sorted by date.
 ReservationManager::Node* ReservationManager::mergeSortedLists(
     Node* left, Node* right)
 {
@@ -211,7 +231,6 @@ ReservationManager::Node* ReservationManager::mergeSortedLists(
 
     while (left != nullptr && right != nullptr)
     {
-        // Taking the left node on equal dates preserves tie order.
         if (left->data.getReservationDate() <=
             right->data.getReservationDate())
         {
@@ -227,19 +246,10 @@ ReservationManager::Node* ReservationManager::mergeSortedLists(
         tail = tail->next;
     }
 
-    if (left != nullptr)
-    {
-        tail->next = left;
-    }
-    else
-    {
-        tail->next = right;
-    }
-
+    tail->next = (left != nullptr) ? left : right;
     return dummy.next;
 }
 
-// Manual merge sort: O(n log n) time.
 ReservationManager::Node* ReservationManager::mergeSort(Node* start)
 {
     if (start == nullptr || start->next == nullptr)
@@ -250,14 +260,12 @@ ReservationManager::Node* ReservationManager::mergeSort(Node* start)
     Node* slow = start;
     Node* fast = start->next;
 
-    // Find the midpoint.
     while (fast != nullptr && fast->next != nullptr)
     {
         slow = slow->next;
         fast = fast->next->next;
     }
 
-    // Separate the two halves.
     Node* right = slow->next;
     slow->next = nullptr;
 
@@ -272,11 +280,6 @@ void ReservationManager::sortByDate()
     head = mergeSort(head);
 }
 
-
-#include <fstream>
-#include <sstream>
-
-// Accept both date formats and validate the calendar date.
 bool ReservationManager::normalizeDate(
     const std::string& input,
     std::string& output)
@@ -330,11 +333,8 @@ bool ReservationManager::normalizeDate(
         31, 31, 30, 31, 30, 31
     };
 
-    bool leapYear =
-        year % 400 == 0 ||
-        (year % 4 == 0 && year % 100 != 0);
-
-    if (leapYear)
+    if (year % 400 == 0 ||
+        (year % 4 == 0 && year % 100 != 0))
     {
         daysInMonth[1] = 29;
     }
@@ -349,7 +349,8 @@ bool ReservationManager::normalizeDate(
 }
 
 bool ReservationManager::loadReservations(
-    const std::string& filename)
+    const std::string& filename,
+    const std::function<bool(const std::string&)>& resourceExists)
 {
     std::ifstream file(filename);
 
@@ -406,13 +407,22 @@ bool ReservationManager::loadReservations(
             continue;
         }
 
+        if (resourceExists && !resourceExists(fields[3]))
+        {
+            std::cerr << "Unknown resource on line "
+                      << lineNumber << '\n';
+            allValid = false;
+            continue;
+        }
+
         Reservation reservation(
             fields[0], fields[1], fields[2], fields[3], date);
 
         if (!addReservation(reservation))
         {
-            std::cerr << "Duplicate ID or date conflict on line "
-                      << lineNumber << '\n';
+            std::cerr << "Rejected reservation on line "
+                      << lineNumber
+                      << ": invalid fields, duplicate ID, or date conflict.\n";
             allValid = false;
         }
     }

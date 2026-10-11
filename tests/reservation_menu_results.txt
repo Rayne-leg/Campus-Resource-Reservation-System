@@ -1,0 +1,181 @@
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+0. Exit
+Choose an option: Enter Reservation ID to search: Reservation 301 found.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+0. Exit
+Choose an option: Enter Reservation ID to search: Reservation not found.
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+0. Exit
+Choose an option: 
+===== RESERVATIONS SORTED BY DATE =====
+Reservation ID: 316
+Student ID: 1016
+Student Name: Henry White
+Resource ID: R111
+Reservation Date: 2026-09-15
+------------------------
+Reservation ID: 301
+Student ID: 1001
+Student Name: Alice Smith
+Resource ID: R101
+Reservation Date: 2026-09-15
+------------------------
+Reservation ID: 317
+Student ID: 1017
+Student Name: Amelia Harris
+Resource ID: R113
+Reservation Date: 2026-09-16
+------------------------
+Reservation ID: 302
+Student ID: 1002
+Student Name: Bob Johnson
+Resource ID: R103
+Reservation Date: 2026-09-16
+------------------------
+Reservation ID: 318
+Student ID: 1018
+Student Name: Daniel Martin
+Resource ID: R115
+Reservation Date: 2026-09-17
+------------------------
+Reservation ID: 303
+Student ID: 1003
+Student Name: Sara Lee
+Resource ID: R105
+Reservation Date: 2026-09-17
+------------------------
+Reservation ID: 319
+Student ID: 1019
+Student Name: Charlotte Thompson
+Resource ID: R117
+Reservation Date: 2026-09-18
+------------------------
+Reservation ID: 304
+Student ID: 1004
+Student Name: David Kim
+Resource ID: R107
+Reservation Date: 2026-09-18
+------------------------
+Reservation ID: 320
+Student ID: 1020
+Student Name: William Garcia
+Resource ID: R119
+Reservation Date: 2026-09-19
+------------------------
+Reservation ID: 305
+Student ID: 1005
+Student Name: Emma Davis
+Resource ID: R109
+Reservation Date: 2026-09-19
+------------------------
+Reservation ID: 306
+Student ID: 1006
+Student Name: Noah Wilson
+Resource ID: R111
+Reservation Date: 2026-09-20
+------------------------
+Reservation ID: 307
+Student ID: 1007
+Student Name: Mia Brown
+Resource ID: R113
+Reservation Date: 2026-09-21
+------------------------
+Reservation ID: 308
+Student ID: 1008
+Student Name: Liam Garcia
+Resource ID: R115
+Reservation Date: 2026-09-22
+------------------------
+Reservation ID: 309
+Student ID: 1009
+Student Name: Olivia Martinez
+Resource ID: R117
+Reservation Date: 2026-09-23
+------------------------
+Reservation ID: 310
+Student ID: 1010
+Student Name: Ethan Miller
+Resource ID: R119
+Reservation Date: 2026-09-24
+------------------------
+Reservation ID: 311
+Student ID: 1011
+Student Name: Ava Anderson
+Resource ID: R101
+Reservation Date: 2026-09-25
+------------------------
+Reservation ID: 312
+Student ID: 1012
+Student Name: Lucas Taylor
+Resource ID: R103
+Reservation Date: 2026-09-26
+------------------------
+Reservation ID: 313
+Student ID: 1013
+Student Name: Sophia Moore
+Resource ID: R105
+Reservation Date: 2026-09-27
+------------------------
+Reservation ID: 314
+Student ID: 1014
+Student Name: James Thomas
+Resource ID: R107
+Reservation Date: 2026-09-28
+------------------------
+Reservation ID: 315
+Student ID: 1015
+Student Name: Isabella Jackson
+Resource ID: R109
+Reservation Date: 2026-09-29
+------------------------
+
+===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View active reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability
+8. Display waiting list
+9. Display cancellation history
+10. Search reservation by ID
+11. Sort active reservations by date
+0. Exit
+Choose an option: Goodbye.
