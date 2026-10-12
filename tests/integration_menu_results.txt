@@ -1,21 +1,22 @@
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option:
+Choose an option: 
 ===== RESOURCE UTILIZATION =====
 ID          Name                     Active reservations
 R101        Study Room 101           2
@@ -40,23 +41,24 @@ R119        VR Headset               2
 R120        Physics Tutoring         0
 Total active reservations: 20
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option:
+Choose an option: 
 ===== MOST REQUESTED RESOURCES =====
 Measured by current active reservation counts.
 ID          Name                     Active reservations
@@ -72,23 +74,24 @@ R117        Laptop 05                2
 R119        VR Headset               2
 All resources tied for the highest count are shown.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option:
+Choose an option: 
 ===== WAITING-LIST STATISTICS =====
 ID          Name                     Waiting students    Waiting requests
 R101        Study Room 101           0                   0
@@ -114,60 +117,62 @@ R120        Physics Tutoring         0                   0
 Waiting students counts each student ID once per resource.
 Waiting requests counts each queued date request.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Enter Reservation ID to search: Reservation 301 found.
+Choose an option: Enter Reservation ID to search for: Reservation 301 is an active reservation.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Enter Reservation ID to search: Reservation not found.
+Choose an option: Enter Reservation ID to search for: Reservation ID not found.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option:
-===== RESERVATIONS SORTED BY DATE =====
+Choose an option: Reservations sorted by date (earliest first).
 Reservation ID: 316
 Student ID: 1016
 Student Name: Henry White
@@ -289,113 +294,119 @@ Resource ID: R109
 Reservation Date: 2026-09-29
 ------------------------
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter date (YYYY-MM-DD or MM/DD/YYYY): Reservation RES1 created.
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter Reservation Date (YYYY-MM-DD or MM/DD/YYYY): Reservation RES1 created for R101 on 2026-10-11.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter date (YYYY-MM-DD or MM/DD/YYYY): Reservation RES2 created.
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter Reservation Date (YYYY-MM-DD or MM/DD/YYYY): Reservation RES2 created for R101 on 2026-10-12.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter date (YYYY-MM-DD or MM/DD/YYYY): Resource reserved for 2026-10-12. Added to waiting list.
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter Reservation Date (YYYY-MM-DD or MM/DD/YYYY): R101 is reserved for 2026-10-12. Adding you to the waiting list.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter date (YYYY-MM-DD or MM/DD/YYYY): Resource reserved for 2026-10-11. Added to waiting list.
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter Reservation Date (YYYY-MM-DD or MM/DD/YYYY): R101 is reserved for 2026-10-11. Adding you to the waiting list.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter date (YYYY-MM-DD or MM/DD/YYYY): You are already waiting for that resource and date.
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter Reservation Date (YYYY-MM-DD or MM/DD/YYYY): You are already waiting for that resource and date.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option:
+Choose an option: 
 ===== WAITING-LIST STATISTICS =====
 ID          Name                     Waiting students    Waiting requests
 R101        Study Room 101           2                   2
@@ -421,42 +432,44 @@ R120        Physics Tutoring         0                   0
 Waiting students counts each student ID once per resource.
 Waiting requests counts each queued date request.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Enter Reservation ID to cancel: Promoted Student Four to reservation RES3.
+Choose an option: Enter Reservation ID to cancel: Promoted Student Four from the waiting list to reservation RES3.
 Reservation RES1 cancelled.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option:
+Choose an option: 
 ===== WAITING LIST =====
 Student ID: S3
 Student Name: Student Three
@@ -464,23 +477,24 @@ Resource ID: R101
 Reservation Date: 2026-10-12
 ------------------------
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option:
+Choose an option: 
 ===== WAITING-LIST STATISTICS =====
 ID          Name                     Waiting students    Waiting requests
 R101        Study Room 101           1                   1
@@ -506,41 +520,43 @@ R120        Physics Tutoring         0                   0
 Waiting students counts each student ID once per resource.
 Waiting requests counts each queued date request.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Cannot restore: duplicate ID or date conflict.
+Choose an option: Could not restore RES1: R101 is now reserved on 2026-10-11 (for example, a waiting student was promoted). The history record was kept.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option:
+Choose an option: 
 ===== CANCELLATION HISTORY (most recent first) =====
 Reservation ID: RES1
 Student ID: S1
@@ -550,41 +566,43 @@ Original Date: 2026-10-11
 Cancelled On: today
 ------------------------
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
 Choose an option: Enter Reservation ID to cancel: Reservation RES3 cancelled.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option:
+Choose an option: 
 ===== WAITING LIST =====
 Student ID: S3
 Student Name: Student Three
@@ -592,78 +610,82 @@ Resource ID: R101
 Reservation Date: 2026-10-12
 ------------------------
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Restored reservation RES3.
+Choose an option: Restored reservation RES3 for R101 on 2026-10-11.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Enter Reservation ID to cancel: Promoted Student Three to reservation RES4.
+Choose an option: Enter Reservation ID to cancel: Promoted Student Three from the waiting list to reservation RES4.
 Reservation RES2 cancelled.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
 Choose an option: Waiting list is empty.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option:
+Choose an option: 
 ===== WAITING-LIST STATISTICS =====
 ID          Name                     Waiting students    Waiting requests
 R101        Study Room 101           0                   0
@@ -689,23 +711,24 @@ R120        Physics Tutoring         0                   0
 Waiting students counts each student ID once per resource.
 Waiting requests counts each queued date request.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option:
+Choose an option: 
 ===== RESOURCE UTILIZATION =====
 ID          Name                     Active reservations
 R101        Study Room 101           4
@@ -730,46 +753,48 @@ R119        VR Headset               2
 R120        Physics Tutoring         0
 Total active reservations: 22
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option:
+Choose an option: 
 ===== MOST REQUESTED RESOURCES =====
 Measured by current active reservation counts.
 ID          Name                     Active reservations
 R101        Study Room 101           4
 All resources tied for the highest count are shown.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Enter date (YYYY-MM-DD or MM/DD/YYYY):
+Choose an option: Enter date to check (YYYY-MM-DD or MM/DD/YYYY): 
 ===== RESOURCE AVAILABILITY FOR 2026-10-13 =====
 ID          Name                     Availability
 R101        Study Room 101           Available
@@ -793,206 +818,218 @@ R118        Calculator 03            Available
 R119        VR Headset               Available
 R120        Physics Tutoring         Available
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Enter date (YYYY-MM-DD or MM/DD/YYYY): Invalid calendar date.
+Choose an option: Enter date to check (YYYY-MM-DD or MM/DD/YYYY): Invalid date. Use YYYY-MM-DD (e.g. 2026-09-25) or MM/DD/YYYY, or press Enter to cancel.
+Enter date to check (YYYY-MM-DD or MM/DD/YYYY): No date entered; operation cancelled.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
 Choose an option: Please enter a number.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
 Choose an option: Invalid option.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
 Choose an option: Enter Resource ID: That resource does not exist.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Student name cannot be empty.
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Student name is required.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
 Choose an option: Goodbye.
 
 ===== EMPTY-DATA FIFO SCENARIO =====
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter date (YYYY-MM-DD or MM/DD/YYYY): Reservation RES1 created.
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter Reservation Date (YYYY-MM-DD or MM/DD/YYYY): Reservation RES1 created for R101 on 2026-10-11.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter date (YYYY-MM-DD or MM/DD/YYYY): Resource reserved for 2026-10-11. Added to waiting list.
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter Reservation Date (YYYY-MM-DD or MM/DD/YYYY): R101 is reserved for 2026-10-11. Adding you to the waiting list.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter date (YYYY-MM-DD or MM/DD/YYYY): Resource reserved for 2026-10-11. Added to waiting list.
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter Reservation Date (YYYY-MM-DD or MM/DD/YYYY): R101 is reserved for 2026-10-11. Adding you to the waiting list.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Enter Reservation ID to cancel: Promoted First Waiter to reservation RES2.
+Choose an option: Enter Reservation ID to cancel: Promoted First Waiter from the waiting list to reservation RES2.
 Reservation RES1 cancelled.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option:
+Choose an option: 
 ===== WAITING LIST =====
 Student ID: C
 Student Name: Second Waiter
@@ -1000,57 +1037,631 @@ Resource ID: R101
 Reservation Date: 2026-10-11
 ------------------------
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
-Choose an option: Enter Reservation ID to cancel: Promoted Second Waiter to reservation RES3.
+Choose an option: Enter Reservation ID to cancel: Promoted Second Waiter from the waiting list to reservation RES3.
 Reservation RES2 cancelled.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
 Choose an option: Waiting list is empty.
 
-===== CAMPUS RESOURCE RESERVATION SYSTEM =====
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
 1. Reserve a resource
-2. View active reservations
+2. View all reservations
 3. Edit a reservation
 4. Cancel a reservation
 5. Undo last cancellation
 6. Display all resources
-7. Display resource availability
+7. Display resource availability for a date
 8. Display waiting list
 9. Display cancellation history
-10. Search reservation by ID
-11. Sort active reservations by date
-12. Resource utilization report
-13. Most requested resources report
-14. Waiting-list statistics report
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
 0. Exit
 Choose an option: Goodbye.
+
+===== UNDO AND INPUT SCENARIO =====
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter Reservation Date (YYYY-MM-DD or MM/DD/YYYY): Invalid date. Use YYYY-MM-DD (e.g. 2026-09-25) or MM/DD/YYYY, or press Enter to cancel.
+Enter Reservation Date (YYYY-MM-DD or MM/DD/YYYY): Reservation RES1 created for R101 on 2026-10-11.
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter Reservation Date (YYYY-MM-DD or MM/DD/YYYY): Reservation RES2 created for R101 on 2026-10-12.
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Enter Reservation ID to edit: Enter new date (YYYY-MM-DD or MM/DD/YYYY): Could not update: that resource is already reserved on 2026-10-12.
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Reservation ID: RES2
+Student ID: B
+Student Name: Second Student
+Resource ID: R101
+Reservation Date: 2026-10-12
+------------------------
+Reservation ID: RES1
+Student ID: A
+Student Name: First Student
+Resource ID: R101
+Reservation Date: 2026-10-11
+------------------------
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Enter Reservation ID to cancel: Reservation RES1 cancelled.
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Enter Reservation ID to cancel: Reservation RES2 cancelled.
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: 
+===== CANCELLATION HISTORY (most recent first) =====
+Reservation ID: RES2
+Student ID: B
+Student Name: Second Student
+Resource ID: R101
+Original Date: 2026-10-12
+Cancelled On: today
+------------------------
+Reservation ID: RES1
+Student ID: A
+Student Name: First Student
+Resource ID: R101
+Original Date: 2026-10-11
+Cancelled On: today
+------------------------
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Restored reservation RES2 for R101 on 2026-10-12.
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: 
+===== CANCELLATION HISTORY (most recent first) =====
+Reservation ID: RES1
+Student ID: A
+Student Name: First Student
+Resource ID: R101
+Original Date: 2026-10-11
+Cancelled On: today
+------------------------
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Restored reservation RES1 for R101 on 2026-10-11.
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: No cancellations have been made.
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: 
+===== RESOURCE UTILIZATION =====
+ID          Name                     Active reservations
+R101        Study Room 101           2
+R102        Study Room 102           0
+R103        Study Room 103           0
+R104        Study Room 104           0
+R105        Laptop 01                0
+R106        Laptop 02                0
+R107        Laptop 03                0
+R108        Laptop 04                0
+R109        Calculator 01            0
+R110        Calculator 02            0
+R111        3D Printer               0
+R112        Oscilloscope             0
+R113        Arduino Kit              0
+R114        Math Tutoring            0
+R115        CS Tutoring              0
+R116        Study Room 201           0
+R117        Laptop 05                0
+R118        Calculator 03            0
+R119        VR Headset               0
+R120        Physics Tutoring         0
+Total active reservations: 2
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Enter Reservation ID to edit: Reservation ID not found.
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Enter Reservation ID to cancel: Reservation ID not found.
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Enter Resource ID: Enter Student ID: Student ID is required.
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Enter Resource ID: Enter Student ID: Enter Student Name: Enter Reservation Date (YYYY-MM-DD or MM/DD/YYYY): No date entered; operation cancelled.
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Please enter a number.
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Goodbye.
+
+===== RELOAD AND ID COLLISION SCENARIO =====
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Enter Reservation ID to cancel: Reservation 301 cancelled.
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Enter reservations file (blank for data/reservations.txt): Finished loading data/reservations.txt, but some lines were skipped (see messages above).
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Could not restore 301: that reservation ID is already in use. The history record was kept.
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: 
+===== CANCELLATION HISTORY (most recent first) =====
+Reservation ID: 301
+Student ID: 1001
+Student Name: Alice Smith
+Resource ID: R101
+Original Date: 2026-09-15
+Cancelled On: today
+------------------------
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: 
+===== RESOURCE UTILIZATION =====
+ID          Name                     Active reservations
+R101        Study Room 101           2
+R102        Study Room 102           0
+R103        Study Room 103           2
+R104        Study Room 104           0
+R105        Laptop 01                2
+R106        Laptop 02                0
+R107        Laptop 03                2
+R108        Laptop 04                0
+R109        Calculator 01            2
+R110        Calculator 02            0
+R111        3D Printer               2
+R112        Oscilloscope             0
+R113        Arduino Kit              2
+R114        Math Tutoring            0
+R115        CS Tutoring              2
+R116        Study Room 201           0
+R117        Laptop 05                2
+R118        Calculator 03            0
+R119        VR Headset               2
+R120        Physics Tutoring         0
+Total active reservations: 20
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: Goodbye.
+
+===== EOF SCENARIO =====
+
+===== COLLEGE RESOURCE RESERVATION SYSTEM =====
+1. Reserve a resource
+2. View all reservations
+3. Edit a reservation
+4. Cancel a reservation
+5. Undo last cancellation
+6. Display all resources
+7. Display resource availability for a date
+8. Display waiting list
+9. Display cancellation history
+10. Resource utilization report
+11. Most requested resources report
+12. Waiting-list statistics report
+13. Sort reservations by date
+14. Load reservations from file
+15. Search for a reservation by ID
+0. Exit
+Choose an option: 
+Input ended. Goodbye.

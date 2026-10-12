@@ -1,5 +1,5 @@
 #include <iostream>
-#include <limits>
+#include <sstream>
 #include <string>
 
 #include "ResourceManager.h"
@@ -10,277 +10,358 @@
 
 int nextReservationNumber = 1;
 
-void printMenu()
+bool readLine(const std::string& prompt, std::string& out)
 {
-    std::cout << "\n===== CAMPUS RESOURCE RESERVATION SYSTEM =====\n";
-    std::cout << "1. Reserve a resource\n";
-    std::cout << "2. View active reservations\n";
-    std::cout << "3. Edit a reservation\n";
-    std::cout << "4. Cancel a reservation\n";
-    std::cout << "5. Undo last cancellation\n";
-    std::cout << "6. Display all resources\n";
-    std::cout << "7. Display resource availability\n";
-    std::cout << "8. Display waiting list\n";
-    std::cout << "9. Display cancellation history\n";
-    std::cout << "10. Search reservation by ID\n";
-    std::cout << "11. Sort active reservations by date\n";
-    std::cout << "12. Resource utilization report\n";
-    std::cout << "13. Most requested resources report\n";
-    std::cout << "14. Waiting-list statistics report\n";
-    std::cout << "0. Exit\n";
-    std::cout << "Choose an option: ";
-}
-
-void clearInputError()
-{
-    std::cin.clear();
-    std::cin.ignore(
-        std::numeric_limits<std::streamsize>::max(), '\n');
-}
-
-bool readDate(std::string& date)
-{
-    std::string input;
-    std::cout << "Enter date (YYYY-MM-DD or MM/DD/YYYY): ";
-
-    if (!(std::cin >> input))
+    std::cout << prompt;
+    if (!std::getline(std::cin, out))
     {
         return false;
     }
 
-    if (!ReservationManager::normalizeDate(input, date))
+    const std::string whitespace = " \t\r\n";
+    const std::size_t first = out.find_first_not_of(whitespace);
+    if (first == std::string::npos)
     {
-        std::cout << "Invalid calendar date.\n";
-        return false;
+        out.clear();
+        return true;
     }
-
+    const std::size_t last = out.find_last_not_of(whitespace);
+    out = out.substr(first, last - first + 1);
     return true;
 }
 
-std::string generateReservationID(
-    const ReservationManager& reservationManager)
+// prompts until a valid date is entered, gives false on EOF.
+// entering nothing cancels everyhing (returns false with date empty).
+// uses ReservationManager::normalizeDate so there is one set of date rules:
+// YYYY-MM-DD or MM/DD/YYYY are accepted, and the date comes back as YYYY-MM-DD.
+bool readDate(const std::string& prompt, std::string& date)
+{
+    while (true)
+    {
+        std::string entered;
+        if (!readLine(prompt, entered))
+        {
+            return false;
+        }
+        if (entered.empty())
+        {
+            std::cout << "No date entered; operation cancelled." << std::endl;
+            return false;
+        }
+        if (ReservationManager::normalizeDate(entered, date))
+        {
+            return true;
+        }
+        std::cout << "Invalid date. Use YYYY-MM-DD (e.g. 2026-09-25) or MM/DD/YYYY, "
+                  << "or press Enter to cancel." << std::endl;
+    }
+}
+
+// next auto-generated reservation id that is not already in use. Needed because
+// reservations loaded from a file may already use RES1, RES2, ...
+std::string nextFreeReservationID(const ReservationManager& reservationManager)
 {
     std::string id;
-
     do
     {
         id = "RES" + std::to_string(nextReservationNumber++);
-    }
-    while (reservationManager.searchReservation(id));
-
+    } while (reservationManager.searchReservation(id));
     return id;
 }
 
-void handleReserve(
-    ResourceManager& resourceManager,
-    ReservationManager& reservationManager,
-    WaitingList& waitingList)
+// ---------------------------------------------------------------------------
+// menu
+// ---------------------------------------------------------------------------
+
+void printMenu()
+{
+    std::cout << "\n===== COLLEGE RESOURCE RESERVATION SYSTEM =====" << std::endl;
+    std::cout << "1. Reserve a resource" << std::endl;
+    std::cout << "2. View all reservations" << std::endl;
+    std::cout << "3. Edit a reservation" << std::endl;
+    std::cout << "4. Cancel a reservation" << std::endl;
+    std::cout << "5. Undo last cancellation" << std::endl;
+    std::cout << "6. Display all resources" << std::endl;
+    std::cout << "7. Display resource availability for a date" << std::endl;
+    std::cout << "8. Display waiting list" << std::endl;
+    std::cout << "9. Display cancellation history" << std::endl;
+    std::cout << "10. Resource utilization report" << std::endl;
+    std::cout << "11. Most requested resources report" << std::endl;
+    std::cout << "12. Waiting-list statistics report" << std::endl;
+    std::cout << "13. Sort reservations by date" << std::endl;
+    std::cout << "14. Load reservations from file" << std::endl;
+    std::cout << "15. Search for a reservation by ID" << std::endl;
+    std::cout << "0. Exit" << std::endl;
+}
+
+// ---------------------------------------------------------------------------
+// handlers
+// ---------------------------------------------------------------------------
+
+void handleReserve(ResourceManager& resourceManager,
+                   ReservationManager& reservationManager,
+                   WaitingList& waitingList)
 {
     std::string resourceID, studentID, studentName, date;
 
-    std::cout << "Enter Resource ID: ";
-
-    if (!(std::cin >> resourceID))
-    {
+    if (!readLine("Enter Resource ID: ", resourceID))
         return;
-    }
 
     if (!resourceManager.resourceExists(resourceID))
     {
-        std::cout << "That resource does not exist.\n";
+        std::cout << "That resource does not exist." << std::endl;
         return;
     }
 
-    std::cout << "Enter Student ID: ";
-
-    if (!(std::cin >> studentID))
+    if (!readLine("Enter Student ID: ", studentID) || studentID.empty())
     {
+        std::cout << "Student ID is required." << std::endl;
         return;
     }
-
-    std::cin.ignore(
-        std::numeric_limits<std::streamsize>::max(), '\n');
-
-    std::cout << "Enter Student Name: ";
-
-    if (!std::getline(std::cin, studentName))
+    if (!readLine("Enter Student Name: ", studentName) || studentName.empty())
     {
+        std::cout << "Student name is required." << std::endl;
         return;
     }
-
-    if (studentName.find_first_not_of(" \t\r") ==
-        std::string::npos)
-    {
-        std::cout << "Student name cannot be empty.\n";
+    if (!readDate("Enter Reservation Date (YYYY-MM-DD or MM/DD/YYYY): ", date))
         return;
-    }
 
-    if (!readDate(date))
-    {
-        return;
-    }
-
-    if (!resourceManager.isResourceAvailableOnDate(
-            resourceID, date, reservationManager))
+    // availability is per resource and date, a booking on one date cant
+    // block the same resource on a diff date
+    if (!resourceManager.isResourceAvailableOnDate(resourceID, date, reservationManager))
     {
         if (waitingList.hasWaitingRequest(studentID, resourceID, date))
         {
-            std::cout << "You are already waiting for that resource and date.\n";
+            std::cout << "You are already waiting for that resource and date." << std::endl;
             return;
         }
-        waitingList.enqueue(
-            WaitingRequest(studentID, studentName, resourceID, date));
-
-        std::cout << "Resource reserved for " << date
-                  << ". Added to waiting list.\n";
+        std::cout << resourceID << " is reserved for " << date
+                  << ". Adding you to the waiting list." << std::endl;
+        waitingList.enqueue(WaitingRequest(studentID, studentName, resourceID, date));
         return;
     }
 
-    std::string id = generateReservationID(reservationManager);
-    Reservation reservation(id, studentID, studentName, resourceID, date);
+    std::string reservationID = nextFreeReservationID(reservationManager);
 
-    if (!reservationManager.addReservation(reservation))
+    Reservation newReservation(reservationID, studentID, studentName, resourceID, date);
+
+    if (!reservationManager.addReservation(newReservation))
     {
-        std::cout << "Reservation rejected.\n";
+        std::cout << "Could not create reservation (duplicate ID or date conflict)." << std::endl;
         return;
     }
 
-    std::cout << "Reservation " << id << " created.\n";
+    std::cout << "Reservation " << reservationID << " created for " << resourceID
+              << " on " << date << "." << std::endl;
 }
 
 void handleEdit(ReservationManager& reservationManager)
 {
-    std::string id, date;
-    std::cout << "Enter Reservation ID to edit: ";
+    std::string reservationID, newDate;
 
-    if (!(std::cin >> id))
+    if (!readLine("Enter Reservation ID to edit: ", reservationID))
+        return;
+
+    // check existence first so not found and date conflict are reported
+    // as the different problems they are
+    if (!reservationManager.searchReservation(reservationID))
     {
+        std::cout << "Reservation ID not found." << std::endl;
         return;
     }
 
-    if (!reservationManager.searchReservation(id))
-    {
-        std::cout << "Reservation not found.\n";
+    if (!readDate("Enter new date (YYYY-MM-DD or MM/DD/YYYY): ", newDate))
         return;
-    }
 
-    if (!readDate(date))
+    if (reservationManager.editReservation(reservationID, newDate))
     {
-        return;
-    }
-
-    if (reservationManager.editReservation(id, date))
-    {
-        std::cout << "Reservation updated.\n";
+        std::cout << "Reservation updated." << std::endl;
     }
     else
     {
-        std::cout << "That resource is already reserved on that date.\n";
+        std::cout << "Could not update: that resource is already reserved on "
+                  << newDate << "." << std::endl;
     }
+}
+
+void handleCancel(ResourceManager& resourceManager,
+                  ReservationManager& reservationManager,
+                  WaitingList& waitingList,
+                  CancellationStack& cancellationStack)
+{
+    std::string reservationID;
+
+    if (!readLine("Enter Reservation ID to cancel: ", reservationID))
+        return;
+
+    Reservation removed;
+
+    if (!reservationManager.removeReservation(reservationID, removed))
+    {
+        std::cout << "Reservation ID not found." << std::endl;
+        return;
+    }
+
+    // add the cancellation to the history stack
+    const std::string cancelDate = "today";
+    cancellationStack.push(CancelledReservation(removed.getReservationID(),
+                                                removed.getStudentID(),
+                                                removed.getStudentName(),
+                                                removed.getResourceID(),
+                                                removed.getReservationDate(),
+                                                cancelDate));
+
+    const std::string freedResource = removed.getResourceID();
+    const std::string freedDate = removed.getReservationDate();
+
+    // promote the earliest waiting request for specifically this resource and date only
+    // peek first, so a failed add wont removes a student from the queue
+    WaitingRequest nextInLine;
+    if (resourceManager.isResourceAvailableOnDate(freedResource, freedDate,
+                                                  reservationManager) &&
+        waitingList.peekForResourceDate(freedResource, freedDate, nextInLine))
+    {
+        std::string newResID = nextFreeReservationID(reservationManager);
+        Reservation promotedReservation(newResID,
+                                        nextInLine.studentID,
+                                        nextInLine.studentName,
+                                        nextInLine.resourceID,
+                                        nextInLine.reservationDate);
+
+        if (reservationManager.addReservation(promotedReservation))
+        {
+            WaitingRequest removedRequest;
+            waitingList.dequeueForResourceDate(freedResource, freedDate, removedRequest);
+            std::cout << "Promoted " << nextInLine.studentName
+                      << " from the waiting list to reservation " << newResID << "."
+                      << std::endl;
+        }
+        else
+        {
+            std::cout << "Could not promote the waiting student; request remains queued."
+                      << std::endl;
+        }
+    }
+
+    std::cout << "Reservation " << reservationID << " cancelled." << std::endl;
+}
+
+// the undo :
+//   * the history record is only removed after the reservation is frfr back
+//   * if the original id is being used, or someone (like a promoted student) now
+//     holds that resource/date, the restore is refused, the record stays on
+//     top of the stack, and the message says which problem happened
+void handleUndo(ResourceManager& resourceManager,
+                ReservationManager& reservationManager,
+                CancellationStack& cancellationStack)
+{
+    CancelledReservation lastCancelled;
+
+    if (!cancellationStack.peek(lastCancelled))
+    {
+        std::cout << "Cancellation history is empty." << std::endl;
+        return;
+    }
+
+    if (!resourceManager.resourceExists(lastCancelled.resourceID))
+    {
+        std::cout << "Could not restore " << lastCancelled.reservationID
+                  << ": resource " << lastCancelled.resourceID
+                  << " no longer exists. The history record was kept." << std::endl;
+        return;
+    }
+
+    if (reservationManager.searchReservation(lastCancelled.reservationID))
+    {
+        std::cout << "Could not restore " << lastCancelled.reservationID
+                  << ": that reservation ID is already in use. "
+                  << "The history record was kept." << std::endl;
+        return;
+    }
+
+    if (reservationManager.hasResourceDateConflict(lastCancelled.resourceID,
+                                                   lastCancelled.reservationDate))
+    {
+        std::cout << "Could not restore " << lastCancelled.reservationID << ": "
+                  << lastCancelled.resourceID << " is now reserved on "
+                  << lastCancelled.reservationDate
+                  << " (for example, a waiting student was promoted). "
+                  << "The history record was kept." << std::endl;
+        return;
+    }
+
+    Reservation restored(lastCancelled.reservationID,
+                         lastCancelled.studentID,
+                         lastCancelled.studentName,
+                         lastCancelled.resourceID,
+                         lastCancelled.reservationDate);
+
+    if (!reservationManager.addReservation(restored))
+    {
+        std::cout << "Could not restore " << lastCancelled.reservationID
+                  << ". The history record was kept." << std::endl;
+        return;
+    }
+
+    // restore successful, only now can u remove the record from the stack
+    CancelledReservation discarded;
+    cancellationStack.pop(discarded);
+
+    std::cout << "Restored reservation " << lastCancelled.reservationID
+              << " for " << lastCancelled.resourceID
+              << " on " << lastCancelled.reservationDate << "." << std::endl;
 }
 
 void handleSearch(const ReservationManager& reservationManager)
 {
-    std::string id;
-    std::cout << "Enter Reservation ID to search: ";
+    std::string reservationID;
 
-    if (!(std::cin >> id))
-    {
+    if (!readLine("Enter Reservation ID to search for: ", reservationID))
         return;
-    }
 
-    if (reservationManager.searchReservation(id))
+    if (reservationManager.searchReservation(reservationID))
     {
-        std::cout << "Reservation " << id << " found.\n";
+        std::cout << "Reservation " << reservationID << " is an active reservation."
+                  << std::endl;
     }
     else
     {
-        std::cout << "Reservation not found.\n";
+        std::cout << "Reservation ID not found." << std::endl;
     }
 }
 
-void handleCancel(
-    ResourceManager& resourceManager,
-    ReservationManager& reservationManager,
-    WaitingList& waitingList,
-    CancellationStack& cancellationStack)
+void handleLoad(const ResourceManager& resourceManager,
+                ReservationManager& reservationManager)
 {
-    std::string id;
-    std::cout << "Enter Reservation ID to cancel: ";
+    std::string filename;
 
-    if (!(std::cin >> id))
-    {
+    if (!readLine("Enter reservations file (blank for data/reservations.txt): ", filename))
         return;
-    }
-
-    Reservation removed;
-
-    if (!reservationManager.removeReservation(id, removed))
+    if (filename.empty())
     {
-        std::cout << "Reservation not found.\n";
-        return;
+        filename = "data/reservations.txt";
     }
 
-    cancellationStack.push(CancelledReservation(
-        removed.getReservationID(),
-        removed.getStudentID(),
-        removed.getStudentName(),
-        removed.getResourceID(),
-        removed.getReservationDate(),
-        "today"));
+    // lines that fail validation are reported by loadReservations and skipped;
+    // valid lines are still loaded.
+    const bool allValid = reservationManager.loadReservations(
+        filename,
+        [&resourceManager](const std::string& id) { return resourceManager.resourceExists(id); });
 
-    WaitingRequest request;
-    if (resourceManager.isResourceAvailableOnDate(
-            removed.getResourceID(), removed.getReservationDate(),
-            reservationManager) &&
-        waitingList.peekForResourceDate(
-            removed.getResourceID(), removed.getReservationDate(), request))
+    if (allValid)
     {
-        std::string newID = generateReservationID(reservationManager);
-        Reservation replacement(
-            newID, request.studentID, request.studentName,
-            request.resourceID, request.reservationDate);
-        if (reservationManager.addReservation(replacement))
-        {
-            waitingList.dequeueForResourceDate(
-                removed.getResourceID(), removed.getReservationDate(), request);
-            std::cout << "Promoted " << request.studentName
-                      << " to reservation " << newID << ".\n";
-        }
+        std::cout << "Reservations loaded from " << filename << "." << std::endl;
     }
-
-    std::cout << "Reservation " << id << " cancelled.\n";
+    else
+    {
+        std::cout << "Finished loading " << filename
+                  << ", but some lines were skipped (see messages above)." << std::endl;
+    }
 }
 
-void handleUndo(
-    ResourceManager&,
-    ReservationManager& reservationManager,
-    CancellationStack& cancellationStack)
-{
-    CancelledReservation cancelled;
-
-    if (!cancellationStack.pop(cancelled))
-    {
-        return;
-    }
-
-    Reservation restored(
-        cancelled.reservationID,
-        cancelled.studentID,
-        cancelled.studentName,
-        cancelled.resourceID,
-        cancelled.reservationDate);
-
-    if (!reservationManager.addReservation(restored))
-    {
-        cancellationStack.push(cancelled);
-        std::cout << "Cannot restore: duplicate ID or date conflict.\n";
-        return;
-    }
-
-    std::cout << "Restored reservation "
-              << cancelled.reservationID << ".\n";
-}
+// ---------------------------------------------------------------------------
+// main
+// ---------------------------------------------------------------------------
 
 int main()
 {
@@ -291,125 +372,111 @@ int main()
 
     if (!resourceManager.loadResources("data/resources.txt"))
     {
-        std::cout << "Cannot start without the resource file.\n";
-        return 1;
+        std::cout << "Warning: starting with no resources loaded." << std::endl;
     }
 
-    if (!reservationManager.loadReservations(
-            "data/reservations.txt",
-            [&resourceManager](const std::string& resourceID)
-            {
-                return resourceManager.resourceExists(resourceID);
+    // Load Ken's sample reservations with resource validation before the menu.
+    if (!reservationManager.loadReservations("data/reservations.txt",
+            [&resourceManager](const std::string& id) {
+                return resourceManager.resourceExists(id);
             }))
     {
-        std::cout
-            << "Warning: reservation file missing or some rows rejected.\n";
+        std::cout << "Some reservations could not be loaded; see validation messages."
+                  << std::endl;
     }
 
-    const ReservationCounter countForReports =
-        [&reservationManager](const std::string& resourceID)
+    // report adapter. declared after reservationManager so it never outlives it.
+    // connected to ReservationManager::countReservationsForResource.
+    ReservationCounter countForReports =
+        [&reservationManager](const std::string& resourceID) -> int
         {
             return reservationManager.countReservationsForResource(resourceID);
         };
 
     int choice = -1;
 
-    while (true)
+    while (choice != 0)
     {
         printMenu();
 
-        if (!(std::cin >> choice))
+        std::string line;
+        if (!readLine("Choose an option: ", line))
         {
-            if (std::cin.eof())
-            {
-                break;
-            }
-
-            clearInputError();
-            std::cout << "Please enter a number.\n";
-            continue;
+            std::cout << "\nInput ended. Goodbye." << std::endl;
+            break;
         }
 
-        if (choice == 0)
+        //  only accetps a whole number; anything else is reported, not looped on
+        std::istringstream parser(line);
+        char extra;
+        if (!(parser >> choice) || (parser >> extra))
         {
-            std::cout << "Goodbye.\n";
-            break;
+            choice = -1;
+            std::cout << "Please enter a number." << std::endl;
+            continue;
         }
 
         switch (choice)
         {
             case 1:
-                handleReserve(
-                    resourceManager, reservationManager, waitingList);
+                handleReserve(resourceManager, reservationManager, waitingList);
                 break;
-
             case 2:
-                std::cout << "\n===== ACTIVE RESERVATIONS =====\n";
                 reservationManager.displayReservations();
                 break;
-
             case 3:
                 handleEdit(reservationManager);
                 break;
-
             case 4:
-                handleCancel(resourceManager, reservationManager,
-                             waitingList, cancellationStack);
+                handleCancel(resourceManager, reservationManager, waitingList,
+                             cancellationStack);
                 break;
-
             case 5:
-                handleUndo(resourceManager, reservationManager,
-                           cancellationStack);
+                handleUndo(resourceManager, reservationManager, cancellationStack);
                 break;
-
             case 6:
                 resourceManager.displayAllResources();
                 break;
-
             case 7:
             {
                 std::string date;
-                if (readDate(date))
-                    resourceManager.displayAvailabilityForDate(
-                        date, reservationManager);
+                if (readDate("Enter date to check (YYYY-MM-DD or MM/DD/YYYY): ", date))
+                {
+                    resourceManager.displayAvailabilityForDate(date, reservationManager);
+                }
                 break;
             }
-
             case 8:
                 waitingList.displayWaitingList();
                 break;
-
             case 9:
                 cancellationStack.displayHistory();
                 break;
-
             case 10:
-                handleSearch(reservationManager);
+                ResourceReports::displayResourceUtilization(resourceManager, countForReports);
                 break;
-
             case 11:
+                ResourceReports::displayMostRequestedResources(resourceManager, countForReports);
+                break;
+            case 12:
+                ResourceReports::displayWaitingListStatistics(resourceManager, waitingList);
+                break;
+            case 13:
                 reservationManager.sortByDate();
-                std::cout << "\n===== RESERVATIONS SORTED BY DATE =====\n";
+                std::cout << "Reservations sorted by date (earliest first)." << std::endl;
                 reservationManager.displayReservations();
                 break;
-
-            case 12:
-                ResourceReports::displayResourceUtilization(
-                    resourceManager, countForReports);
-                break;
-
-            case 13:
-                ResourceReports::displayMostRequestedResources(
-                    resourceManager, countForReports);
-                break;
-
             case 14:
-                ResourceReports::displayWaitingListStatistics(
-                    resourceManager, waitingList);
+                handleLoad(resourceManager, reservationManager);
                 break;
-
+            case 15:
+                handleSearch(reservationManager);
+                break;
+            case 0:
+                std::cout << "Goodbye." << std::endl;
+                break;
             default:
-                std::cout << "Invalid option.\n";
+                std::cout << "Invalid option." << std::endl;
         }
     }
 

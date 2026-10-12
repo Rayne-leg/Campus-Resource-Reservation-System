@@ -211,4 +211,4 @@ void WaitingList::displayWaitingList() const
 bool WaitingList::isEmpty() const
 {
     return front == nullptr;
-}
+} 

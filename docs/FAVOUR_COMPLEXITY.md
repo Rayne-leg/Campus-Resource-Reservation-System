@@ -17,4 +17,4 @@ Let R be the number of resources, A the number of active reservations, and W the
 
 The queue's ordinary enqueue/dequeue remain O(1). The matching operation is O(W) because unrelated requests may precede an eligible one. No additional active-reservation linked list is created.
 
-These notes cover Favour's prepared components. Ken should document his count function, search, and merge sort using their actual implementation. Ademola should document the complete cancellation/undo/menu behavior after integration.
+These bounds describe the combined production components. Reservation algorithm complexity is in KEN_RESERVATION_WORK.md; stack and menu complexity is in ADEMOLA_COMPLEXITY.md.
